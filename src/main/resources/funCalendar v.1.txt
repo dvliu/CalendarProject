@@ -1,0 +1,25 @@
+funCalendar v.1
+
+Two profiles - student and worker 
+
+priorities
+	a) critical
+		- set in stone (weekly basis)
+	b) important
+	c) fun
+		- cancel-able (create profiles)
+		- hobbies (nap, watch TV, read)	
+
+1) student priorities 
+	a) class
+	b) extra-curricular
+		- club meetings
+		- study groups
+	c) recreational
+	
+2) worker priorities
+	a) work
+	b) appointments
+	c) recreational
+	
+	

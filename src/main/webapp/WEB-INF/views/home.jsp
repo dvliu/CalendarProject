@@ -80,10 +80,10 @@
 			
 			<tbody>
 				<c:forEach var="i" begin="1" end="7" step="1">
-					<c:if test="${today_day_of_week <= 7 && today_day_of_week <= first_int_day_month}">
-						<td><a href="#" id="date"></a></td>
+					<c:if test="${today_day_of_week <= 7 && (today_day_of_week <= first_int_day_month)}">
+						<td></td>
 					</c:if>
-					<c:if test="${today_day_of_week > 7 }">
+					<c:if test="${(today_day_of_week % 7 == ) }">
 						<!-- CONTINUE -->
 					</c:if>
 				</c:forEach>

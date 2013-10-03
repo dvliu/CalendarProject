@@ -50,7 +50,6 @@ public class HomeController {
 		}
 
 		model.addAttribute("metadata", answer);
-
 		model.addAttribute("today_day", day);
 		return "home";
 	}

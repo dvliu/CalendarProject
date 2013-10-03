@@ -17,7 +17,7 @@ public class CurrentDate {
 
 	public int getDate() {
 //		return calendar.get(Calendar.DATE);
-		return 2;
+		return 3;
 	}
 
 	public int getYear() {
@@ -78,19 +78,19 @@ public class CurrentDate {
 	public String getStringDayOfWeek() {
 		switch (getDayOfWeek()) {
 		case 1:
-			return "sun";
-		case 2:
 			return "mon";
-		case 3:
+		case 2:
 			return "tue";
-		case 4:
+		case 3:
 			return "wed";
-		case 5:
+		case 4:
 			return "thur";
-		case 6:
+		case 5:
 			return "fri";
-		case 7:
+		case 6:
 			return "sat";
+		case 7:
+			return "sun";
 		}
 		return null;
 	}

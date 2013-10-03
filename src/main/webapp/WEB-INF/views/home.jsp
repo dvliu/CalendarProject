@@ -14,10 +14,11 @@
 		<p>Month is: ${today_month}</p>
 		<p>Year is: ${today_year}</p>
 		<p>Date is: ${today_date}</p>
-		<p>Day is: ${today_day}</p>
 		<p>First day of month is: ${first_day_month}</p>
 		<p>First int day of month is: ${first_int_day_month}</p>
 		<p>Last day of the month is: ${last_day_month}</p>
+		<p>Today's day of the week: ${today_day_of_week} </p>
+		<p>Day is: ${today_day}</p>
 	</div>
 
 	<div class="well">
@@ -78,17 +79,17 @@
 				<th>fri</th>
 				<th>sat</th>
 			</tr>
-			<tr>
-				<td><a href="#" id="date">1</a></td>
-				<td><a href="#" id="date">2</a></td>
-				<td><a href="#" id="date">3</a></td>
-				<td><a href="#" id="date">4</a></td>
-				<td><a href="#" id="date">5</a></td>
-				<td><a href="#" id="date">6</a></td>
-				<td><a href="#" id="date">7</a></td>
-			</tr>
+			
 			<tbody>
-
+				<tr>
+					<td><a href="#" id="date">1</a></td>
+					<td><a href="#" id="date">2</a></td>
+					<td><a href="#" id="date">3</a></td>
+					<td><a href="#" id="date">4</a></td>
+					<td><a href="#" id="date">5</a></td>
+					<td><a href="#" id="date">6</a></td>
+					<td><a href="#" id="date">7</a></td>
+				</tr>
 			</tbody>
 		</table>
 	</div>

@@ -16,7 +16,8 @@ public class CurrentDate {
 	}
 
 	public int getDate() {
-		return calendar.get(Calendar.DATE);
+//		return calendar.get(Calendar.DATE);
+		return 2;
 	}
 
 	public int getYear() {

@@ -17,6 +17,7 @@
 		<p>Day is: ${today_day}</p>
 		<p>First day of month is: ${first_day_month}</p>
 		<p>First int day of month is: ${first_int_day_month}</p>
+		<p>Last day of the month is: ${last_day_month}</p>
 	</div>
 
 	<div class="well">
@@ -40,19 +41,18 @@
 			<tbody>
 				<c:forEach var="i" begin="0" end="${last_day_month }" step="7">
 					<tr>
-						<c:forEach var="j" begin="1" end="7">
+						<c:forEach var="j" begin="1" end="7" step="1">
 						<c:set var="sum" value="${i+j}"/>
-							<c:if test="${sum <= last_day_month}">
-									<c:if test="${sum % 7 == 0}"><td class="sun"></c:if>
-									<c:if test="${sum % 7 == 1}"><td class="mon"></c:if>
-									<c:if test="${sum % 7 == 2}"><td class="tue"></c:if>
-									<c:if test="${sum % 7 == 3}"><td class="wed"></c:if>
-									<c:if test="${sum % 7 == 4}"><td class="thur"></c:if>
-									<c:if test="${sum % 7 == 5}"><td class="fri"></c:if>
-									<c:if test="${sum % 7 == 6}"><td class="sat"></c:if>
-									<a href="#" id="date">${sum}</a></td>
-							</c:if>
-							
+							<c:choose>
+								<c:when test="${sum <= first_int_day_month}">
+									<td></td>
+								</c:when>
+								<c:otherwise>
+									<c:if test="${sum - first_int_day_month <= last_day_month}"> 
+										<td><a href="#" id="date">${sum - first_int_day_month}</a></td>
+									</c:if>
+								</c:otherwise>
+							</c:choose>	
 						</c:forEach>
 					</tr>
 				</c:forEach>
@@ -60,11 +60,12 @@
 		</table>
 	</div>
 
+
 	<div class="well">
 		<table border="1" class="table">
 			<thead>
 				<tr>
-					<td colspan="8">Week of ${today_month} ${today_date}</td>
+					<td colspan="8">week of ${today_month} ${today_date}</td>
 				</tr>
 
 			</thead>

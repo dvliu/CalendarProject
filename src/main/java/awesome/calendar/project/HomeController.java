@@ -38,19 +38,20 @@ public class HomeController {
 		model.addAttribute("last_day_month", cDate.getLastDayOfMonth(cDate.getMonth()));
 		model.addAttribute("first_day_month", firstDayOfMonth);
 		model.addAttribute("first_int_day_month", firstIntDayOfMonth);
+		model.addAttribute("today_day", cDate.getStringDayOfWeek());
 		
-		String day = cDate.getStringDayOfWeek();
 		List<HashMap<String, String>> answer = Lists.newArrayList();
 
-		for (int i = cDate.getDate(); i < cDate.getDate() + 7; i++) {
-			List<HashMap<String, String>> searchResult = cacheService.search(String.valueOf(cDate.getMonth()), i);
-			for (HashMap<String, String> map : searchResult) {
-				answer.add(map);
-			}
-		}
+		// search ES implementation
+		// for (int i = cDate.getDate(); i < cDate.getDate() + 7; i++) {
+		// List<HashMap<String, String>> searchResult =
+		// cacheService.search(String.valueOf(cDate.getMonth()), i);
+		// for (HashMap<String, String> map : searchResult) {
+		// answer.add(map);
+		// }
+		// }
 
 		model.addAttribute("metadata", answer);
-		model.addAttribute("today_day", day);
 		return "home";
 	}
 

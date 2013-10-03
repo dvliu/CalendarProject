@@ -27,7 +27,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class CacheService {
 
 	final String type = "testtype";
-	final String index = "testndex";
+	final String index = "testindex";
 
 	ObjectMapper mapper = new ObjectMapper();
 	Client client = new TransportClient().addTransportAddress(new InetSocketTransportAddress("localhost", 9300));

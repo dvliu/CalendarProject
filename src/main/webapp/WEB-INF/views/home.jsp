@@ -1,8 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script src="resources/js/jquery-1.10.2.min.js"></script>
 <script src="resources/bootstrap/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="resources/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="resources/bootstrap/css/bootstrap.min.css" />
 
 <html>
 <head>
@@ -13,7 +12,6 @@
 	<div class="well">
 		<p>Month is: ${today_month}</p>
 		<p>Year is: ${today_year}</p>
-		<p>Date is: ${today_date}</p>
 		<p>First day of month is: ${first_day_month}</p>
 		<p>First int day of month is: ${first_int_day_month}</p>
 		<p>Last day of the month is: ${last_day_month}</p>
@@ -81,15 +79,14 @@
 			</tr>
 			
 			<tbody>
-				<tr>
-					<td><a href="#" id="date">1</a></td>
-					<td><a href="#" id="date">2</a></td>
-					<td><a href="#" id="date">3</a></td>
-					<td><a href="#" id="date">4</a></td>
-					<td><a href="#" id="date">5</a></td>
-					<td><a href="#" id="date">6</a></td>
-					<td><a href="#" id="date">7</a></td>
-				</tr>
+				<c:forEach var="i" begin="1" end="7" step="1">
+					<c:if test="${today_day_of_week <= 7 && today_day_of_week <= first_int_day_month}">
+						<td><a href="#" id="date"></a></td>
+					</c:if>
+					<c:if test="${today_day_of_week > 7 }">
+						<!-- CONTINUE -->
+					</c:if>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>

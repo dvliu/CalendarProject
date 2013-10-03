@@ -9,15 +9,14 @@ import org.springframework.stereotype.Component;
 public class CurrentDate {
 
 	Calendar calendar = Calendar.getInstance();
-
+	
 	public int getMonth() {
 		// plus one because January is Month 0
 		return calendar.get(Calendar.MONTH) + 1;
 	}
 
 	public int getDate() {
-//		return calendar.get(Calendar.DATE);
-		return 3;
+		return calendar.get(Calendar.DATE);
 	}
 
 	public int getYear() {
@@ -77,19 +76,19 @@ public class CurrentDate {
 
 	public String getStringDayOfWeek() {
 		switch (getDayOfWeek()) {
-		case 1:
+		case 0:
 			return "mon";
-		case 2:
+		case 1:
 			return "tue";
-		case 3:
+		case 2:
 			return "wed";
-		case 4:
+		case 3:
 			return "thur";
-		case 5:
+		case 4:
 			return "fri";
-		case 6:
+		case 5:
 			return "sat";
-		case 7:
+		case 6:
 			return "sun";
 		}
 		return null;

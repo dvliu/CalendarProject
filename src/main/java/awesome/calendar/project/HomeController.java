@@ -57,6 +57,12 @@ public class HomeController {
 		return "home";
 	}
 
+	@RequestMapping(value="show", method = RequestMethod.GET)
+	public String show(Model model){
+		return "show";
+	}
+	
+	
 	@RequestMapping(value = "add", method = RequestMethod.GET)
 	public String add(Model model) {
 		model.addAttribute("title", "add");
@@ -64,7 +70,7 @@ public class HomeController {
 		model.addAttribute("priorities", prioritiesList);
 
 		return "add";
-	}
+	}	
 
 	private List<String> processPriorities() {
 		List<String> prioritiesList = Lists.newArrayList();

@@ -17,6 +17,7 @@
 		<p>Last day of the month is: ${last_day_month}</p>
 		<p>Today's day of the week: ${today_day_of_week} </p>
 		<p>Day is: ${today_day}</p>
+		<p>Week of Month: ${week_of_month}</p>
 	</div>
 
 	<div class="well">
@@ -99,21 +100,18 @@
 						</c:choose>
 					</c:if>
 					<c:if test="${today_day_of_week > 7}">
-						<%--
-						<c:choose>
-							<c:when test="${today_day_of_week % 7 <= first_int_day_month}"> 
-								<td></td>
-							</c:when>
-							<c:otherwise>
-								<td><a href="#" id="date">${today_day_of_week - first_int_day_month}</a></td>
-							</c:otherwise>
-						</c:choose>
-						 --%>
+						<td><a>${first_int_day_month + (7 * week_of_month)}</a></td>
 					</c:if>
 					
 				</c:forEach>
 			</tbody>
 		</table>
+	</div>
+	<div class="well">
+		<p>${today_month} ${today_day_of_week}, ${today_year}</p>
+		<ul>
+			<li></li>
+		</ul>
 	</div>
 
 	<div class="well">

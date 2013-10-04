@@ -40,6 +40,7 @@ public class HomeController {
 		model.addAttribute("first_int_day_month", firstIntDayOfMonth);
 		model.addAttribute("today_day_of_week", cDate.getDayOfWeek());
 		model.addAttribute("today_day", cDate.getStringDayOfWeek());
+		model.addAttribute("week_of_month", cDate.getWeekOfMonth());
 		
 		List<HashMap<String, String>> answer = Lists.newArrayList();
 

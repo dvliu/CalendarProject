@@ -69,6 +69,10 @@ public class CurrentDate {
 		}
 		return null;
 	}
+	
+	public int getWeekOfMonth() {
+		return calendar.get(Calendar.WEEK_OF_MONTH);
+	}
 
 	public int getDayOfWeek() {
 		return calendar.get(Calendar.DAY_OF_WEEK);

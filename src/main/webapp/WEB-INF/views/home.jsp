@@ -80,12 +80,37 @@
 			
 			<tbody>
 				<c:forEach var="i" begin="1" end="7" step="1">
-					<c:if test="${today_day_of_week <= 7 && (today_day_of_week <= first_int_day_month)}">
-						<td></td>
+					<c:if test="${today_day_of_week <= 7}">
+						<c:choose>
+							<c:when test="${today_day_of_week <= first_int_day_month}">
+								<td></td>
+							</c:when>
+							<c:otherwise>
+								<c:choose>
+									<c:when test="${i - first_int_day_month <= 0}">
+										<td></td>
+									</c:when>
+									<c:otherwise>
+										<td><a href="#" id="date">${i - first_int_day_month}</a></td>
+									</c:otherwise>
+								</c:choose>
+								
+							</c:otherwise>
+						</c:choose>
 					</c:if>
-					<c:if test="${(today_day_of_week % 7 == ) }">
-						<!-- CONTINUE -->
+					<c:if test="${today_day_of_week > 7}">
+						<%--
+						<c:choose>
+							<c:when test="${today_day_of_week % 7 <= first_int_day_month}"> 
+								<td></td>
+							</c:when>
+							<c:otherwise>
+								<td><a href="#" id="date">${today_day_of_week - first_int_day_month}</a></td>
+							</c:otherwise>
+						</c:choose>
+						 --%>
 					</c:if>
+					
 				</c:forEach>
 			</tbody>
 		</table>

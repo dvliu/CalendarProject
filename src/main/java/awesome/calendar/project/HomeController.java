@@ -3,11 +3,8 @@ package awesome.calendar.project;
 import java.util.HashMap;
 import java.util.List;
 
-import org.elasticsearch.client.Client;
-import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.collect.Lists;
 import org.elasticsearch.common.collect.Maps;
-import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -82,7 +79,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "save", method = RequestMethod.POST)
-	public void save(Model model, @RequestParam(value = "date") String date, @RequestParam(value = "name") String name, @RequestParam(value = "label") String label,
+	public String save(Model model, @RequestParam(value = "date") String date, @RequestParam(value = "name") String name, @RequestParam(value = "label") String label,
 			@RequestParam(value = "priority") String priority) {
 		HashMap<String, Object> metadata = Maps.newHashMap();
 		metadata.put("name", name);
@@ -92,6 +89,7 @@ public class HomeController {
 		metadata.put("month", cDate.getMonth(date));
 		metadata.put("date", cDate.getDate(date));
 		cacheService.index(metadata);
+		return "home";
 	}
 
 	@RequestMapping(value = "delete", method = RequestMethod.POST)

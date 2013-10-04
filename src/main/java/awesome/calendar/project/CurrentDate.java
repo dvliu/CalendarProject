@@ -2,13 +2,16 @@ package awesome.calendar.project;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import org.springframework.stereotype.Component;
 
 @Component
 public class CurrentDate {
 
-	Calendar calendar = Calendar.getInstance();
+	Calendar calendar = Calendar.getInstance(Locale.US);
+	Date date = new Date();
 	
 	public int getMonth() {
 		// plus one because January is Month 0
@@ -16,7 +19,9 @@ public class CurrentDate {
 	}
 
 	public int getDate() {
-		return calendar.get(Calendar.DATE);
+//		return calendar.get(Calendar.DATE);
+		SimpleDateFormat sdf = new SimpleDateFormat("dd");
+		return Integer.valueOf(sdf.format(date));
 	}
 
 	public int getYear() {

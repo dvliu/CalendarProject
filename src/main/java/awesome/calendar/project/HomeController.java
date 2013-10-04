@@ -31,7 +31,7 @@ public class HomeController {
 
 		model.addAttribute("today_month", cDate.getStringMonth(cDate.getMonth()));
 		model.addAttribute("today_year", cDate.getYear());
-//		model.addAttribute("today_date", cDate.getDate());
+		model.addAttribute("today_date", cDate.getDate());
 		model.addAttribute("last_day_month", cDate.getLastDayOfMonth(cDate.getMonth()));
 		model.addAttribute("first_day_month", firstDayOfMonth);
 		model.addAttribute("first_int_day_month", firstIntDayOfMonth);

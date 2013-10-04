@@ -12,6 +12,7 @@
 	<div class="well">
 		<p>Month is: ${today_month}</p>
 		<p>Year is: ${today_year}</p>
+		<p>Today date : ${today_date }</p>
 		<p>First day of month is: ${first_day_month}</p>
 		<p>First int day of month is: ${first_int_day_month}</p>
 		<p>Last day of the month is: ${last_day_month}</p>

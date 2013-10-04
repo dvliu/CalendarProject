@@ -21,7 +21,7 @@
 	</div>
 
 	<div class="well">
-		<p>dynamic calendar - under progress</p>
+		<p>monthly</p>
 		<table border="1" class="table">
 			<thead>
 				<tr>
@@ -62,6 +62,7 @@
 
 
 	<div class="well">
+		<p>weekly</p>
 		<table border="1" class="table">
 			<thead>
 				<tr>
@@ -108,6 +109,7 @@
 		</table>
 	</div>
 	<div class="well">
+		<p>daily</p>
 		<p>${today_month} ${today_day_of_week}, ${today_year}</p>
 		<ul>
 			<li></li>

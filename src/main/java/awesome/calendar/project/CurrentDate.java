@@ -17,7 +17,7 @@ public class CurrentDate {
 		// plus one because January is Month 0
 		return calendar.get(Calendar.MONTH) + 1;
 	}
-
+	
 	public int getDate() {
 //		return calendar.get(Calendar.DATE);
 		SimpleDateFormat sdf = new SimpleDateFormat("dd");

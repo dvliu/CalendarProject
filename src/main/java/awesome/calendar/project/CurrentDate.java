@@ -14,18 +14,18 @@ public class CurrentDate {
 	Date date = new Date();
 	
 	public int getMonth() {
-		// plus one because January is Month 0
-		return calendar.get(Calendar.MONTH) + 1;
+		SimpleDateFormat sdf = new SimpleDateFormat("MM");
+		return Integer.valueOf(sdf.format(date));
 	}
 	
 	public int getDate() {
-//		SimpleDateFormat sdf = new SimpleDateFormat("dd");
-//		return Integer.valueOf(sdf.format(date));
-		return 6;
+		SimpleDateFormat sdf = new SimpleDateFormat("dd");
+		return Integer.valueOf(sdf.format(date));
 	}
 
 	public int getYear() {
-		return calendar.get(Calendar.YEAR);
+		SimpleDateFormat sdf = new SimpleDateFormat("YYYY");
+		return Integer.valueOf(sdf.format(date));
 	}
 
 	public int getMonth(String date) {
@@ -76,7 +76,8 @@ public class CurrentDate {
 	}
 	
 	public int getWeekOfMonth() {
-		return calendar.get(Calendar.WEEK_OF_MONTH);
+		SimpleDateFormat sdf = new SimpleDateFormat("WW");
+		return Integer.valueOf(sdf.format(date));
 	}
 
 	public int getDayOfWeek() {

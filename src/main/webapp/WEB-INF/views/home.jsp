@@ -83,7 +83,7 @@
 			
 			<tbody>
 				<c:forEach var="i" begin="1" end="7" step="1">
-					<c:if test="${today_date <= 7}">
+					<c:if test="${today_date <= 7 - first_int_day_month}">
 						<c:choose>
 							<c:when test="${today_date <= first_int_day_month}">
 								<td></td>
@@ -101,8 +101,8 @@
 							</c:otherwise>
 						</c:choose>
 					</c:if>
-					<c:if test="${today_date > 7}">
-						<td><a>${first_int_day_month + (7 * week_of_month)}</a></td>
+					<c:if test="${today_date > 7 - first_int_day_month}">
+						<td><a>${i + (7 * week_of_month) - first_int_day_month}</a></td>
 					</c:if>
 					
 				</c:forEach>

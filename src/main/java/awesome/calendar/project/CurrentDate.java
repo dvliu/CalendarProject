@@ -19,9 +19,9 @@ public class CurrentDate {
 	}
 	
 	public int getDate() {
-//		return calendar.get(Calendar.DATE);
-		SimpleDateFormat sdf = new SimpleDateFormat("dd");
-		return Integer.valueOf(sdf.format(date));
+//		SimpleDateFormat sdf = new SimpleDateFormat("dd");
+//		return Integer.valueOf(sdf.format(date));
+		return 6;
 	}
 
 	public int getYear() {

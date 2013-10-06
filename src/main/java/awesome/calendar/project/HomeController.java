@@ -41,22 +41,17 @@ public class HomeController {
 		
 		List<HashMap<String, String>> answer = Lists.newArrayList();
 
-		// search ES implementation
-		// for (int i = cDate.getDate(); i < cDate.getDate() + 7; i++) {
-		// List<HashMap<String, String>> searchResult =
-		// cacheService.search(String.valueOf(cDate.getMonth()), i);
-		// for (HashMap<String, String> map : searchResult) {
-		// answer.add(map);
-		// }
-		// }
-
 		model.addAttribute("metadata", answer);
 		return "home";
 	}
 
-	@RequestMapping(value="show", method = RequestMethod.GET)
-	public String show(Model model){
-		return "show";
+	@RequestMapping(value="search", method = RequestMethod.GET)
+	public String search(Model model, @RequestParam(value = "name") String name){
+		List<HashMap<String, String>> searchResults = cacheService.searchName(name);
+		for(HashMap<String, String> search : searchResults){
+			System.out.println(search);
+		}
+		return "home";
 	}
 	
 	

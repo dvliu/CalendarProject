@@ -49,10 +49,42 @@ public class CacheService {
 			t.printStackTrace();
 		}
 	}
-
-	public List<HashMap<String, String>> search(String month, int date) {
+	
+	public List<HashMap<String, String>> searchName(String name){
+		List<HashMap<String, String>> answer = Lists.newArrayList();
 		try {
-			List<HashMap<String, String>> answer = Lists.newArrayList();
+			QueryFilterBuilder nameFilter = queryFilter(matchQuery("name", name));
+			SearchResponse response = client.prepareSearch(index).setTypes(type).setFilter(nameFilter).execute().actionGet();
+
+			long hits = response.getHits().getTotalHits();
+			if (hits < 1) {
+				// oops
+			}
+			for (SearchHit hit : response.getHits()) {
+				HashMap<String, String> metadata = Maps.newHashMap();
+				String metaJson = mapper.writeValueAsString(hit);
+				
+				String index = hit.field("index").getValue();
+				String source = hit.field("_source").getValue();
+				String metaName = hit.field("name").getValue();
+				String label = hit.field("label").getValue();
+				String priority = hit.field("priority").getValue();
+				metadata.put("name", metaName);
+				metadata.put("label", label);
+				metadata.put("priority", priority);
+				answer.add(metadata);
+			}
+			
+		}
+		catch(Throwable t){
+			t.printStackTrace();
+		}
+		return answer;
+	}
+
+	public List<HashMap<String, String>> searchDate(String month, int date) {
+		List<HashMap<String, String>> answer = Lists.newArrayList();
+		try {
 			QueryFilterBuilder monthFilter = queryFilter(matchQuery("month", month));
 			QueryFilterBuilder dateFilter = queryFilter(matchQuery("date", date));
 			SearchResponse response = client.prepareSearch(index).setTypes(type).setFilter(andFilter(monthFilter, dateFilter)).execute().actionGet();
@@ -71,11 +103,10 @@ public class CacheService {
 				metadata.put("priority", priority);
 				answer.add(metadata);
 			}
-			return answer;
 		} catch (Throwable t) {
 			t.printStackTrace();
 		}
-		return null;
+		return answer;
 	}
 
 	public void remove() {

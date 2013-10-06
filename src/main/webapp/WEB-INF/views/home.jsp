@@ -28,7 +28,6 @@
 				<tr>
 					<td colspan="8">${today_month}, ${today_year}</td>
 				</tr>
-
 			</thead>
 			<tr>
 				<th>sun</th>
@@ -118,8 +117,13 @@
 	</div>
 
 	<div class="well">
-		<button class="btn"><a href="/add">add</a></button>
-		<button class="btn"><a href="/show">display all</a></button>
+		<a href="/add">add</a>
+		<div class="control-group">
+		<div class="controls">
+			<input type="text" id="search" placeholder="..." />
+		</div>
+			</div>
+		<a id="search">search</a>
 	</div>
 
 </body>
@@ -127,6 +131,16 @@
 <script type="text/javascript">
 
 $(document).ready(function() {
+	
+	$('a#search').bind('click', function() {
+		$.ajax({
+			type: 'GET',
+			url : 'search',
+			data : {
+				name : $('#search').val()
+			}
+		}).done (alert("searching..."));
+	});
 	
 	$('a#date').bind('click', function() {
 		console.log($(this).html());

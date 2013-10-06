@@ -40,18 +40,9 @@ public class HomeController {
 		model.addAttribute("today_day", cDate.getStringDayOfWeek());
 		model.addAttribute("week_of_month", cDate.getWeekOfMonth());
 
-		List<HashMap<String, String>> answer = Lists.newArrayList();
+		List<HashMap<String, String>> activities = Lists.newArrayList();
 
-		model.addAttribute("metadata", answer);
 		return "home";
-	}
-
-	@ResponseBody
-	@RequestMapping(value = "search", method = RequestMethod.GET)
-	public String search(Model model, @RequestParam(value = "name") String name) {
-		List<HashMap<String, String>> searchResults = cacheService.searchName(name);
-		model.addAttribute("search_results", searchResults);
-		return searchResults.toString();
 	}
 
 	@RequestMapping(value = "add", method = RequestMethod.GET)

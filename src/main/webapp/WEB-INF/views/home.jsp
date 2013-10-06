@@ -25,7 +25,7 @@
 		<table border="1" class="table">
 			<thead>
 				<tr>
-					<td colspan="8">${today_month}, ${today_year}</td>
+					<td colspan="8">${today_month},${today_year}</td>
 				</tr>
 			</thead>
 			<tr>
@@ -41,17 +41,17 @@
 				<c:forEach var="i" begin="0" end="${last_day_month }" step="7">
 					<tr>
 						<c:forEach var="j" begin="1" end="7" step="1">
-						<c:set var="sum" value="${i+j}"/>
+							<c:set var="sum" value="${i+j}" />
 							<c:choose>
 								<c:when test="${sum <= first_int_day_month}">
 									<td></td>
 								</c:when>
 								<c:otherwise>
-									<c:if test="${sum - first_int_day_month <= last_day_month}"> 
+									<c:if test="${sum - first_int_day_month <= last_day_month}">
 										<td><a href="#" id="date">${sum - first_int_day_month}</a></td>
 									</c:if>
 								</c:otherwise>
-							</c:choose>	
+							</c:choose>
 						</c:forEach>
 					</tr>
 				</c:forEach>
@@ -77,7 +77,7 @@
 				<th>fri</th>
 				<th>sat</th>
 			</tr>
-			
+
 			<tbody>
 				<c:forEach var="i" begin="1" end="7" step="1">
 					<c:if test="${today_date <= 7 - first_int_day_month}">
@@ -100,58 +100,27 @@
 					<c:if test="${today_date > 7 - first_int_day_month}">
 						<td><a>${i + (7 * week_of_month) - first_int_day_month}</a></td>
 					</c:if>
-					
+
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
 	<div class="well">
 		<p>daily</p>
-		<p>${today_month} ${today_date}, ${today_year}</p>
+		<p>${today_month}${today_date}, ${today_year}</p>
 		<ul>
 			<li></li>
 		</ul>
 	</div>
 
-	<div class="well" id="searchResults">
-		<table class="table">
-			<p>${search_results}</p>
-			<c:forEach var="result" items="${search_results}">
-				<tr>
-					<td id="${result.key}">${result.value}</td>
-				</tr>				
-			</c:forEach>
-		</table>
-	</div>
-
 	<div class="well">
 		<a href="/add">add</a>
-		<div class="controls">
-			<input type="text" id="search" placeholder="..." />
-		</div>
-		<a id="search">search</a>
 	</div>
 
 </body>
 
 <script type="text/javascript">
-
 	$(document).ready(function() {
-		
-		$('#searchResults').hide();
-
-		$('a#search').bind('click', function() {
-			$.ajax({
-				type : 'GET',
-				url : 'search',
-				data : {
-					name : $('#search').val()
-				}
-			}).done(function(fulldata) {
-				console.log("search data : ", fulldata);
-				$('#searchResults').show();
-			});
-		});
 
 		$('a#date').bind('click', function() {
 			console.log($(this).html());

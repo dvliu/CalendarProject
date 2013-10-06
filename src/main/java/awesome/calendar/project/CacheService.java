@@ -18,7 +18,6 @@ import org.elasticsearch.common.collect.Maps;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.index.query.QueryFilterBuilder;
 import org.elasticsearch.indices.IndexAlreadyExistsException;
-import org.elasticsearch.search.SearchHit;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -56,7 +55,6 @@ public class CacheService {
 		try {
 			QueryFilterBuilder nameFilter = queryFilter(matchQuery("name", name));
 			SearchResponse response = client.prepareSearch(index).setTypes(type).setFilter(nameFilter).execute().actionGet();
-
 			long hits = response.getHits().getTotalHits();
 			if (hits < 1) {
 				// oops

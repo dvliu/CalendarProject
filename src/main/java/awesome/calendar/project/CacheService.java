@@ -1,8 +1,8 @@
 
 package awesome.calendar.project;
 
-import static org.elasticsearch.index.query.FilterBuilders.andFilter;
 import static org.elasticsearch.client.Requests.createIndexRequest;
+import static org.elasticsearch.index.query.FilterBuilders.andFilter;
 import static org.elasticsearch.index.query.FilterBuilders.queryFilter;
 import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
 
@@ -21,6 +21,7 @@ import org.elasticsearch.indices.IndexAlreadyExistsException;
 import org.elasticsearch.search.SearchHit;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
@@ -59,20 +60,10 @@ public class CacheService {
 			long hits = response.getHits().getTotalHits();
 			if (hits < 1) {
 				// oops
-			}
-			for (SearchHit hit : response.getHits()) {
-				HashMap<String, String> metadata = Maps.newHashMap();
-				String metaJson = mapper.writeValueAsString(hit);
+			} else {
+				JsonNode rootNode = mapper.readTree(response.toString());
+				System.out.println(rootNode.toString());
 				
-				String index = hit.field("index").getValue();
-				String source = hit.field("_source").getValue();
-				String metaName = hit.field("name").getValue();
-				String label = hit.field("label").getValue();
-				String priority = hit.field("priority").getValue();
-				metadata.put("name", metaName);
-				metadata.put("label", label);
-				metadata.put("priority", priority);
-				answer.add(metadata);
 			}
 			
 		}

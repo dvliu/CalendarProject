@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 @Controller
 public class HomeController {
 
@@ -21,6 +23,8 @@ public class HomeController {
 
 	@Autowired
 	private CacheService cacheService;
+
+	ObjectMapper mapper = new ObjectMapper();
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String init(Model model) {
@@ -64,8 +68,8 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "save", method = RequestMethod.POST)
-	public String save(Model model, @RequestParam(value = "date") String date, @RequestParam(value = "name") String name, @RequestParam(value = "label") String label,
-			@RequestParam(value = "priority") String priority, @RequestParam(value = "notes") String notes) {
+	public String save(Model model, @RequestParam(value = "date") String date, @RequestParam(value = "name") String name, @RequestParam(value = "label") String label, @RequestParam(value = "priority") String priority,
+			@RequestParam(value = "notes") String notes) {
 		HashMap<String, Object> metadata = Maps.newHashMap();
 		metadata.put("name", name);
 		metadata.put("label", label);
@@ -77,19 +81,22 @@ public class HomeController {
 		cacheService.index(metadata);
 		return "home";
 	}
-	
-	
+
 	@ResponseBody
-	@RequestMapping(value="display", method = RequestMethod.GET)
-	public String display (Model model, @RequestParam(value="date") String date , @RequestParam(value="month") String month) throws Throwable{
+	@RequestMapping(value = "display", method = RequestMethod.GET)
+	public String display(Model model, @RequestParam(value = "date") String date, @RequestParam(value = "month") String month) throws Throwable {
 		List<HashMap<String, String>> answer = Lists.newArrayList();
 		List<HashMap<String, String>> searchResults = cacheService.searchMonth(month);
-		for(HashMap<String, String> result : searchResults){
-			if (result.get("date").equals(date)){
+		for (HashMap<String, String> result : searchResults) {
+			if (result.get("date").equals(date)) {
 				answer.add(result);
 			}
 		}
-		return answer.toString();
+		if (answer == null || answer.isEmpty()) {
+			return null;
+		} else {
+			return mapper.writeValueAsString(answer);
+		}
 	}
 
 	@RequestMapping(value = "delete", method = RequestMethod.POST)

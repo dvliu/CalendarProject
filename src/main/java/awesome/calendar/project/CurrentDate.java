@@ -24,8 +24,7 @@ public class CurrentDate {
 	}
 
 	public int getYear() {
-		SimpleDateFormat sdf = new SimpleDateFormat("YYYY");
-		return Integer.valueOf(sdf.format(date));
+		return calendar.get(Calendar.YEAR);
 	}
 
 	public int getMonth(String date) {

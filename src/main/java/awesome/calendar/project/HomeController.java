@@ -13,9 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 @Controller
 public class HomeController {
 
@@ -25,8 +22,6 @@ public class HomeController {
 	@Autowired
 	private CacheService cacheService;
 
-	private ObjectMapper mapper;
-	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String init(Model model) {
 		cacheService.init();
@@ -94,7 +89,7 @@ public class HomeController {
 				answer.add(result);
 			}
 		}
-		return mapper.writeValueAsString(answer);
+		return answer.toString();
 	}
 
 	@RequestMapping(value = "delete", method = RequestMethod.POST)

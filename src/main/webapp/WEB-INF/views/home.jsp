@@ -10,15 +10,14 @@
 
 <body>
 	<div class="well">
-		<p>Month is: ${today_month}</p>
-		<p>Year is: ${today_year}</p>
-		<p>Today date : ${today_date }</p>
-		<p>First day of month is: ${first_day_month}</p>
-		<p>First int day of month is: ${first_int_day_month}</p>
-		<p>Last day of the month is: ${last_day_month}</p>
-		<p>Today's day of the week: ${today_day_of_week} </p>
-		<p>Day is: ${today_day}</p>
-		<p>Week of Month: ${week_of_month}</p>
+		<p>Month is -> ${today_month}</p>
+		<p>Year is -> ${today_year}</p>
+		<p>Today date -> ${today_date }</p>
+		<p>First day of month is -> ${first_day_month}</p>
+		<p>First int day of month is -> ${first_int_day_month}</p>
+		<p>Last day of the month is -> ${last_day_month}</p>
+		<p>Day is -> ${today_day}</p>
+		<p>Week of Month -> ${week_of_month}</p>
 	</div>
 
 	<div class="well">
@@ -68,7 +67,6 @@
 				<tr>
 					<td colspan="8">week of ${today_month} ${today_date}</td>
 				</tr>
-
 			</thead>
 			<tr>
 				<th>sun</th>
@@ -118,11 +116,9 @@
 
 	<div class="well">
 		<a href="/add">add</a>
-		<div class="control-group">
 		<div class="controls">
 			<input type="text" id="search" placeholder="..." />
 		</div>
-			</div>
 		<a id="search">search</a>
 	</div>
 
@@ -139,8 +135,10 @@ $(document).ready(function() {
 			data : {
 				name : $('#search').val()
 			}
-		}).done (function(fulldata) {
-			console.log("fulldata : ", fulldata);
+		}).done(function(fulldata) {
+			console.log("search data : ", fulldata);
+			
+			
 		});
 	});
 	

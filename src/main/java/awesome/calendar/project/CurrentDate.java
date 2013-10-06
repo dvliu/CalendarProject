@@ -80,12 +80,8 @@ public class CurrentDate {
 		return Integer.valueOf(sdf.format(date));
 	}
 
-	public int getDayOfWeek() {
-		return calendar.get(Calendar.DAY_OF_WEEK);
-	}
-
 	public String getStringDayOfWeek() {
-		switch (getDayOfWeek()) {
+		switch (getDate()) {
 		case 0:
 			return "mon";
 		case 1:

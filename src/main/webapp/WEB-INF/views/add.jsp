@@ -40,6 +40,13 @@
 					</select>
 				</div>
 			</div>
+			<div class="control-group">
+				<label class="control-label" for="notes">notes</label>
+				<div class="controls">
+					<textarea id="notes" >
+					</textarea>
+				</div>
+			</div>
 			<a id="save">save</a> <br /> <a id="back">back to init page</a>
 		</form>
 	</div>
@@ -59,7 +66,8 @@
 					date : $('#date').val(),
 					name : $('#name').val(),
 					label : $('#label').val(),
-					priority : $('#priority').val()
+					priority : $('#priority').val(),
+					notes : $('#notes').val()
 				}
 			}).done(alert("saved!"));
 		});

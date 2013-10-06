@@ -74,6 +74,7 @@ public class CacheService {
 					hit.put("label", sourceNode.path("label").toString());
 					hit.put("year", sourceNode.path("year").toString());
 					hit.put("date", sourceNode.path("date").toString());
+					hit.put("notes", sourceNode.path("notes").toString());
 					answer.add(hit);
 				}
 			}

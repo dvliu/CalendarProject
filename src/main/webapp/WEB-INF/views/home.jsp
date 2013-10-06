@@ -94,7 +94,6 @@
 										<td><a href="#" id="date">${i - first_int_day_month}</a></td>
 									</c:otherwise>
 								</c:choose>
-								
 							</c:otherwise>
 						</c:choose>
 					</c:if>
@@ -114,6 +113,17 @@
 		</ul>
 	</div>
 
+	<div class="well" id="searchResults">
+		<table class="table">
+			<p>${search_results}</p>
+			<c:forEach var="result" items="${search_results}">
+				<tr>
+					<td id="${result.key}">${result.value}</td>
+				</tr>				
+			</c:forEach>
+		</table>
+	</div>
+
 	<div class="well">
 		<a href="/add">add</a>
 		<div class="controls">
@@ -126,28 +136,27 @@
 
 <script type="text/javascript">
 
-$(document).ready(function() {
-	
-	$('a#search').bind('click', function() {
-		$.ajax({
-			type: 'GET',
-			url : 'search',
-			data : {
-				name : $('#search').val()
-			}
-		}).done(function(fulldata) {
-			console.log("search data : ", fulldata);
-			
-			
+	$(document).ready(function() {
+		
+		$('#searchResults').hide();
+
+		$('a#search').bind('click', function() {
+			$.ajax({
+				type : 'GET',
+				url : 'search',
+				data : {
+					name : $('#search').val()
+				}
+			}).done(function(fulldata) {
+				console.log("search data : ", fulldata);
+				$('#searchResults').show();
+			});
 		});
-	});
-	
-	$('a#date').bind('click', function() {
-		console.log($(this).html());
-	});
-	
-});
 
+		$('a#date').bind('click', function() {
+			console.log($(this).html());
+		});
+
+	});
 </script>
-
 </html>

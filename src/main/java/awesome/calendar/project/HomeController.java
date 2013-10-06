@@ -50,11 +50,8 @@ public class HomeController {
 	@RequestMapping(value = "search", method = RequestMethod.GET)
 	public String search(Model model, @RequestParam(value = "name") String name) {
 		List<HashMap<String, String>> searchResults = cacheService.searchName(name);
-		for (HashMap<String, String> search : searchResults) {
-			
-		}
+		model.addAttribute("search_results", searchResults);
 		return searchResults.toString();
-//		return "home";
 	}
 
 	@RequestMapping(value = "add", method = RequestMethod.GET)

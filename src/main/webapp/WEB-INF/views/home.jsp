@@ -139,7 +139,9 @@ $(document).ready(function() {
 			data : {
 				name : $('#search').val()
 			}
-		}).done (alert("searching..."));
+		}).done (function(fulldata) {
+			console.log("fulldata : ", fulldata);
+		});
 	});
 	
 	$('a#date').bind('click', function() {

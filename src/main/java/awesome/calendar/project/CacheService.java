@@ -7,6 +7,7 @@ import static org.elasticsearch.index.query.FilterBuilders.queryFilter;
 import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import org.elasticsearch.action.index.IndexResponse;
@@ -62,8 +63,19 @@ public class CacheService {
 				// oops
 			} else {
 				JsonNode rootNode = mapper.readTree(response.toString());
-				System.out.println(rootNode.toString());
-				
+				Iterator<JsonNode> hitsArray = rootNode.path("hits").path("hits").elements();
+				while(hitsArray.hasNext()){
+					HashMap<String, String> hit = Maps.newHashMap();
+					JsonNode metaNode = hitsArray.next();
+					JsonNode sourceNode = metaNode.path("_source");
+					hit.put("name", sourceNode.path("name").toString());
+					hit.put("priority", sourceNode.path("priority").toString());
+					hit.put("month", sourceNode.path("month").toString());
+					hit.put("label", sourceNode.path("label").toString());
+					hit.put("year", sourceNode.path("year").toString());
+					hit.put("date", sourceNode.path("date").toString());
+					answer.add(hit);
+				}
 			}
 			
 		}

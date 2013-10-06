@@ -1,4 +1,3 @@
-
 package awesome.calendar.project;
 
 import static org.elasticsearch.client.Requests.createIndexRequest;
@@ -51,8 +50,8 @@ public class CacheService {
 			t.printStackTrace();
 		}
 	}
-	
-	public List<HashMap<String, String>> searchName(String name){
+
+	public List<HashMap<String, String>> searchName(String name) {
 		List<HashMap<String, String>> answer = Lists.newArrayList();
 		try {
 			QueryFilterBuilder nameFilter = queryFilter(matchQuery("name", name));
@@ -64,7 +63,7 @@ public class CacheService {
 			} else {
 				JsonNode rootNode = mapper.readTree(response.toString());
 				Iterator<JsonNode> hitsArray = rootNode.path("hits").path("hits").elements();
-				while(hitsArray.hasNext()){
+				while (hitsArray.hasNext()) {
 					HashMap<String, String> hit = Maps.newHashMap();
 					JsonNode metaNode = hitsArray.next();
 					JsonNode sourceNode = metaNode.path("_source");
@@ -78,9 +77,41 @@ public class CacheService {
 					answer.add(hit);
 				}
 			}
-			
+
+		} catch (Throwable t) {
+			t.printStackTrace();
 		}
-		catch(Throwable t){
+		return answer;
+	}
+
+	public List<HashMap<String, String>> searchMonth(String month) {
+		List<HashMap<String, String>> answer = Lists.newArrayList();
+		try {
+			QueryFilterBuilder monthFilter = queryFilter(matchQuery("month", month));
+			SearchResponse response = client.prepareSearch(index).setTypes(type).setFilter(monthFilter).execute().actionGet();
+
+			long hits = response.getHits().getTotalHits();
+			if (hits < 1) {
+				// oops
+			} else {
+				JsonNode rootNode = mapper.readTree(response.toString());
+				Iterator<JsonNode> hitsArray = rootNode.path("hits").path("hits").elements();
+				while (hitsArray.hasNext()) {
+					HashMap<String, String> hit = Maps.newHashMap();
+					JsonNode metaNode = hitsArray.next();
+					JsonNode sourceNode = metaNode.path("_source");
+					hit.put("name", sourceNode.path("name").toString());
+					hit.put("priority", sourceNode.path("priority").toString());
+					hit.put("month", sourceNode.path("month").toString());
+					hit.put("label", sourceNode.path("label").toString());
+					hit.put("year", sourceNode.path("year").toString());
+					hit.put("date", sourceNode.path("date").toString());
+					hit.put("notes", sourceNode.path("notes").toString());
+					answer.add(hit);
+				}
+			}
+
+		} catch (Throwable t) {
 			t.printStackTrace();
 		}
 		return answer;
@@ -96,16 +127,22 @@ public class CacheService {
 			long hits = response.getHits().getTotalHits();
 			if (hits < 1) {
 				// oops
-			}
-			for (SearchHit hit : response.getHits()) {
-				HashMap<String, String> metadata = Maps.newHashMap();
-				String name = hit.field("name").getValue();
-				String label = hit.field("label").getValue();
-				String priority = hit.field("priority").getValue();
-				metadata.put("name", name);
-				metadata.put("label", label);
-				metadata.put("priority", priority);
-				answer.add(metadata);
+			} else {
+				JsonNode rootNode = mapper.readTree(response.toString());
+				Iterator<JsonNode> hitsArray = rootNode.path("hits").path("hits").elements();
+				while (hitsArray.hasNext()) {
+					HashMap<String, String> hit = Maps.newHashMap();
+					JsonNode metaNode = hitsArray.next();
+					JsonNode sourceNode = metaNode.path("_source");
+					hit.put("name", sourceNode.path("name").toString());
+					hit.put("priority", sourceNode.path("priority").toString());
+					hit.put("month", sourceNode.path("month").toString());
+					hit.put("label", sourceNode.path("label").toString());
+					hit.put("year", sourceNode.path("year").toString());
+					hit.put("date", sourceNode.path("date").toString());
+					hit.put("notes", sourceNode.path("notes").toString());
+					answer.add(hit);
+				}
 			}
 		} catch (Throwable t) {
 			t.printStackTrace();

@@ -1,5 +1,6 @@
 package awesome.calendar.project;
 
+import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.List;
 
@@ -76,6 +77,22 @@ public class HomeController {
 		metadata.put("notes", notes);
 		cacheService.index(metadata);
 		return "home";
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value="display", method = RequestMethod.GET)
+	public String display (Model model, @RequestParam(value="date") String date , @RequestParam(value="month") String month){
+		List<HashMap<String, String>> answer = Lists.newArrayList();
+		List<HashMap<String, String>> searchResults = cacheService.searchMonth(month);
+		for(HashMap<String, String> result : searchResults){
+			if (result.get("name").equals(date)){
+				answer.add(result);
+				System.out.println(result);
+			}
+		}
+		
+		return "display";
 	}
 
 	@RequestMapping(value = "delete", method = RequestMethod.POST)

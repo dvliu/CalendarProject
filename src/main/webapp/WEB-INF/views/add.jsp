@@ -60,6 +60,7 @@
 		});
 
 		$('a#save').bind('click', function() {
+			
 			$.ajax({
 				type : "POST",
 				url : "save",

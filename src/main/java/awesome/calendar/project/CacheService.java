@@ -115,11 +115,12 @@ public class CacheService {
 		return answer;
 	}
 
+	@Deprecated
 	public List<HashMap<String, String>> searchDate(String month, int date) {
 		List<HashMap<String, String>> answer = Lists.newArrayList();
 		try {
 			QueryFilterBuilder monthFilter = queryFilter(matchQuery("month", month));
-			QueryFilterBuilder dateFilter = queryFilter(matchQuery("date", date));
+			QueryFilterBuilder dateFilter = queryFilter(matchQuery("date", String.valueOf(date)));
 			SearchResponse response = client.prepareSearch(index).setTypes(type).setFilter(andFilter(monthFilter, dateFilter)).execute().actionGet();
 
 			long hits = response.getHits().getTotalHits();

@@ -1,7 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script src="resources/js/jquery-1.10.2.min.js"></script>
 <script src="resources/bootstrap/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="resources/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="resources/bootstrap/css/bootstrap.min.css" />
 
 <html>
 <head>
@@ -10,7 +11,7 @@
 
 <body>
 	<div class="well">
-		<p>Month is -> ${today_month}</p>
+		<p id="today_month">${today_month}</p>
 		<p>Year is -> ${today_year}</p>
 		<p>Today date -> ${today_date }</p>
 		<p>First day of month is -> ${first_day_month}</p>
@@ -107,7 +108,7 @@
 	</div>
 	<div class="well">
 		<p>daily</p>
-		<p>${today_month}${today_date}, ${today_year}</p>
+		<p>${today_month}${today_date},${today_year}</p>
 		<ul>
 			<li></li>
 		</ul>
@@ -123,9 +124,18 @@
 	$(document).ready(function() {
 
 		$('a#date').bind('click', function() {
-			console.log($(this).html());
+			$.ajax({
+				type : "GET",
+				url : "display",
+				data : {
+					date : $(this).html(),
+					month : $('p#today_month').val()
+				}
+			}).done(function(fulldata){
+				console.log("month : ", fulldata.month);
+				console.log("date : ", fulldata.date);
+			});
 		});
-
 	});
 </script>
 </html>

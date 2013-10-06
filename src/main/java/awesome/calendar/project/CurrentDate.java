@@ -77,7 +77,7 @@ public class CurrentDate {
 	
 	public int getWeekOfMonth() {
 		SimpleDateFormat sdf = new SimpleDateFormat("WW");
-		return Integer.valueOf(sdf.format(date));
+		return Integer.valueOf(sdf.format(date)) - 1;
 	}
 
 	public String getStringDayOfWeek() {

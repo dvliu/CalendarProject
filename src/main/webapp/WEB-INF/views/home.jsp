@@ -12,6 +12,7 @@
 <body>
 	<div class="well">
 		<p id="today_month">${today_month}</p>
+		<p id="today_int_month">${today_int_month }</p>
 		<p>Year is -> ${today_year}</p>
 		<p>Today date -> ${today_date }</p>
 		<p>First day of month is -> ${first_day_month}</p>
@@ -99,7 +100,7 @@
 						</c:choose>
 					</c:if>
 					<c:if test="${today_date > 7 - first_int_day_month}">
-						<td><a>${i + (7 * week_of_month) - first_int_day_month}</a></td>
+						<td><a href="#" id="date">${i + (7 * week_of_month) - first_int_day_month}</a></td>
 					</c:if>
 
 				</c:forEach>
@@ -129,11 +130,10 @@
 				url : "display",
 				data : {
 					date : $(this).html(),
-					month : $('p#today_month').val()
+					month : $('#today_int_month').html()
 				}
 			}).done(function(fulldata){
-				console.log("month : ", fulldata.month);
-				console.log("date : ", fulldata.date);
+				console.log("fulldata : ", fulldata);
 			});
 		});
 	});

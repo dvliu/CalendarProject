@@ -1,6 +1,5 @@
 package awesome.calendar.project;
 
-import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.List;
 
@@ -9,11 +8,13 @@ import org.elasticsearch.common.collect.Maps;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 public class HomeController {
@@ -24,6 +25,8 @@ public class HomeController {
 	@Autowired
 	private CacheService cacheService;
 
+	private ObjectMapper mapper;
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String init(Model model) {
 		cacheService.init();
@@ -33,6 +36,7 @@ public class HomeController {
 		int firstIntDayOfMonth = cDate.getIntFirstDayOfMonth(firstDayOfMonth);
 
 		model.addAttribute("today_month", cDate.getStringMonth(cDate.getMonth()));
+		model.addAttribute("today_int_month", cDate.getMonth());
 		model.addAttribute("today_year", cDate.getYear());
 		model.addAttribute("today_date", cDate.getDate());
 		model.addAttribute("last_day_month", cDate.getLastDayOfMonth(cDate.getMonth()));
@@ -82,17 +86,15 @@ public class HomeController {
 	
 	@ResponseBody
 	@RequestMapping(value="display", method = RequestMethod.GET)
-	public String display (Model model, @RequestParam(value="date") String date , @RequestParam(value="month") String month){
+	public String display (Model model, @RequestParam(value="date") String date , @RequestParam(value="month") String month) throws Throwable{
 		List<HashMap<String, String>> answer = Lists.newArrayList();
 		List<HashMap<String, String>> searchResults = cacheService.searchMonth(month);
 		for(HashMap<String, String> result : searchResults){
-			if (result.get("name").equals(date)){
+			if (result.get("date").equals(date)){
 				answer.add(result);
-				System.out.println(result);
 			}
 		}
-		
-		return "display";
+		return mapper.writeValueAsString(answer);
 	}
 
 	@RequestMapping(value = "delete", method = RequestMethod.POST)

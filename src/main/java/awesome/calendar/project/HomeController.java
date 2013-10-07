@@ -99,6 +99,6 @@ public class HomeController {
 
 	@RequestMapping(value = "delete", method = RequestMethod.POST)
 	public void delete(Model model) {
-
+		
 	}
 }

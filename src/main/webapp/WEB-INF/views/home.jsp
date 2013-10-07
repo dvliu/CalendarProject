@@ -3,7 +3,7 @@
 <script src="resources/bootstrap/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="resources/bootstrap/css/bootstrap.min.css" />
-
+<script src="resources/js/script.js"></script>
 <html>
 <head>
 <title>${title}</title>
@@ -148,7 +148,7 @@
 
 </body>
 
-<script type="text/javascript" src="resources/js/script.js">
+<script type="text/javascript" src="resources/js/home.js">
 </script>
 
 </html>

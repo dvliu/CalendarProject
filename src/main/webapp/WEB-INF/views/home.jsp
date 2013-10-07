@@ -13,12 +13,12 @@
 	<div class="well">
 		<p id="today_month">${today_month}</p>
 		<p id="today_int_month">${today_int_month }</p>
-		<p>Year is -> ${today_year}</p>
-		<p>Today date -> ${today_date }</p>
+		<p id="today_year">${today_year}</p>
+		<p id="today_date">${today_day}</p>
+		<p id="today_date">${today_date }</p>
 		<p>First day of month is -> ${first_day_month}</p>
 		<p>First int day of month is -> ${first_int_day_month}</p>
 		<p>Last day of the month is -> ${last_day_month}</p>
-		<p>Day is -> ${today_day}</p>
 		<p>Week of Month -> ${week_of_month}</p>
 	</div>
 
@@ -62,9 +62,11 @@
 	</div>
 
 
-	<div class="modal hide fade" tabindex="-1" role="dialog" id="emptyDateModal">
+	<div class="modal hide fade" tabindex="-1" role="dialog"
+		id="emptyDateModal">
 		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<button type="button" class="close" data-dismiss="modal"
+				aria-hidden="true">×</button>
 			<h3>agenda</h3>
 		</div>
 		<div class="modal-body">
@@ -74,7 +76,8 @@
 
 	<div class="modal hide fade" tabindex="-1" role="dialog" id="dateModal">
 		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<button type="button" class="close" data-dismiss="modal"
+				aria-hidden="true">×</button>
 			<h3>agenda</h3>
 		</div>
 		<div class="modal-body">
@@ -82,7 +85,7 @@
 		</div>
 		<div class="modal-footer">
 			<button class="btn" data-dismiss="modal" aria-hidden="true">close</button>
-   			<button class="btn btn-primary">save</button>
+			<button class="btn btn-primary">save</button>
 		</div>
 	</div>
 
@@ -145,29 +148,6 @@
 
 </body>
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('a#date').bind('click', function() {
-			$.ajax({
-				type : "GET",
-				url : "display",
-				data : {
-					date : $(this).html(),
-					month : $('#today_int_month').html()
-				}
-			}).done(function(fulldata){
-				if (fulldata == null || fulldata.length < 1){
-					console.log("empty data");
-					$('#emptyDateModal').modal('show');
-					
-				} else{
-					console.log("fulldata : ", fulldata);
-					$('#dateModal').modal('show');
-					$('#metaJson').html(fulldata);
-				}
-				
-			});
-		});
-	});
+<script type="text/javascript" src="resources/js/script.js">
 </script>
 </html>

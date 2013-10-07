@@ -61,7 +61,6 @@
 		</table>
 	</div>
 
-
 	<div class="modal hide fade" tabindex="-1" role="dialog"
 		id="emptyDateModal">
 		<div class="modal-header">

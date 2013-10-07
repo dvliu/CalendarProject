@@ -150,4 +150,5 @@
 
 <script type="text/javascript" src="resources/js/script.js">
 </script>
+
 </html>

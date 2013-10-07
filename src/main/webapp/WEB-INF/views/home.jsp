@@ -62,6 +62,30 @@
 	</div>
 
 
+	<div class="modal hide fade" tabindex="-1" role="dialog" id="emptyDateModal">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3>agenda</h3>
+		</div>
+		<div class="modal-body">
+			<p id="empty">nothing to display for this date</p>
+		</div>
+	</div>
+
+	<div class="modal hide fade" tabindex="-1" role="dialog" id="dateModal">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3>agenda</h3>
+		</div>
+		<div class="modal-body">
+			<p id="metaJson"></p>
+		</div>
+		<div class="modal-footer">
+			<button class="btn" data-dismiss="modal" aria-hidden="true">close</button>
+   			<button class="btn btn-primary">save</button>
+		</div>
+	</div>
+
 	<div class="well">
 		<p>weekly</p>
 		<table border="1" class="table">
@@ -123,7 +147,6 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-
 		$('a#date').bind('click', function() {
 			$.ajax({
 				type : "GET",
@@ -133,7 +156,16 @@
 					month : $('#today_int_month').html()
 				}
 			}).done(function(fulldata){
-				console.log("fulldata : ", fulldata);
+				if (fulldata == null || fulldata.length < 1){
+					console.log("empty data");
+					$('#emptyDateModal').modal('show');
+					
+				} else{
+					console.log("fulldata : ", fulldata);
+					$('#dateModal').modal('show');
+					$('#metaJson').html(fulldata);
+				}
+				
 			});
 		});
 	});

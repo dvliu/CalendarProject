@@ -44,8 +44,6 @@ public class HomeController {
 		model.addAttribute("today_day", cDate.getStringDayOfWeek());
 		model.addAttribute("week_of_month", cDate.getWeekOfMonth());
 
-		List<HashMap<String, String>> activities = Lists.newArrayList();
-
 		return "home";
 	}
 

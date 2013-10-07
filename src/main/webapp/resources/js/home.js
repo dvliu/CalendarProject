@@ -16,18 +16,13 @@ $(document).ready(function() {
 				console.log("fulldata : ", fulldata);
 				$('#dateModal').modal('show');
 				for (i in fulldata) {
-					console.log("data entry -> ", fulldata[i]);
-					console.log("priority -> ", fulldata[i].priority);
-					console.log("name -> ", fulldata[i].name);
+					console.log(fulldata[i].name);
 				}
 				$('#metaJson').html(fulldata);
 
 				var source = $("#modal-template").html();
 				var template = Handlebars.compile(source);
-				var context = fulldata;
-				console.log("context -> ", context);
-				var html = template(context);
-				console.log("html -> ", html);
+				var html = template(fulldata);
 				$("#agenda-body").html(html);
 			}
 		});

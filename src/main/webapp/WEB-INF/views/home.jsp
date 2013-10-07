@@ -83,12 +83,14 @@
 		<div class="modal-body">
 			<div id="agenda-body">
 				<script id="modal-template" type="text/x-handlebars-template">
-					<p>this -> {{this}}</p>
-					<p>name -> {{name}}</p>
-					<p>label -> {{label}}</p>
-					<p>priority -> {{priority}}</p>
-					<p>month -> {{month}} {{date}}, {{year}}</p>
-					<p>notes -> {{notes}}</p>
+					{{#each .}}
+						<p>this -> {{this}}</p>
+						<p>name -> {{name}}</p>
+						<p>label -> {{label}}</p>
+						<p>priority -> {{priority}}</p>
+						<p>month -> {{month}} {{date}}, {{year}}</p>
+						<p>notes -> {{notes}}</p>
+					{{/each}}
 					<br/>
 				</script>	
 			</div>

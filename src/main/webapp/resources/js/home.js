@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
 	$('a#date').bind('click', function() {
 		$.ajax({
 			type : "GET",
@@ -21,6 +22,11 @@ $(document).ready(function() {
 					console.log("name -> ", fulldata[i].name);
 				}
 				$('#metaJson').html(fulldata);
+
+				var source = $("#modal-template").html();
+				var template = Handlebars.compile(source);
+				var context = fulldata;
+				var html = template(context);
 			}
 		});
 	});

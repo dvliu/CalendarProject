@@ -1,8 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script src="resources/js/jquery-1.10.2.min.js"></script>
 <script src="resources/bootstrap/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="resources/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="resources/bootstrap/css/bootstrap.min.css" />
+<script src="resources/js/handlebars.js"></script>
 <script src="resources/js/script.js"></script>
 <html>
 <head>
@@ -81,11 +81,20 @@
 			<h3>agenda</h3>
 		</div>
 		<div class="modal-body">
-			<p id="metaJson"></p>
+			<script id="modal-template" type="text/x-handlebars-template">
+				{{#each data}}
+					<p>{{this}}</p>
+					<p>{{name}}</p>
+					<p>{{label}}</p>
+					<p>{{priority}}</p>
+					<p>{{month}} {{date}}, {{year}}</p>
+					<p>{{notes}}</p>
+					<br/>
+				{{/each}}
+			</script>
 		</div>
 		<div class="modal-footer">
 			<button class="btn" data-dismiss="modal" aria-hidden="true">close</button>
-			<button class="btn btn-primary">save</button>
 		</div>
 	</div>
 

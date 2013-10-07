@@ -1,7 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script src="resources/js/jquery-1.10.2.min.js"></script>
 <script src="resources/bootstrap/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="resources/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="resources/bootstrap/css/bootstrap.min.css" />
 <script src="resources/js/handlebars.js"></script>
 <script src="resources/js/script.js"></script>
 <html>
@@ -10,16 +11,14 @@
 </head>
 
 <body>
-	<div class="well" style="display:none">
-		<span id="today_month">${today_month}</span>
-		<span id="today_int_month">${today_int_month}</span>
-		<span id="today_year">${today_year}</span>
-		<span id="today_date">${today_day}</span>
-		<span id="today_date">${today_date }</span>
-		<span>First day of month is -> ${first_day_month}</span>
-		<span>First int day of month is -> ${first_int_day_month}</span>
-		<span>Last day of the month is -> ${last_day_month}</span>
-		<span>Week of Month -> ${week_of_month}</span>
+	<div class="well" style="display: none">
+		<span id="today_month">${today_month}</span> <span
+			id="today_int_month">${today_int_month}</span> <span id="today_year">${today_year}</span>
+		<span id="today_date">${today_day}</span> <span id="today_date">${today_date }</span>
+		<span>First day of month is -> ${first_day_month}</span> <span>First
+			int day of month is -> ${first_int_day_month}</span> <span>Last day
+			of the month is -> ${last_day_month}</span> <span>Week of Month ->
+			${week_of_month}</span>
 	</div>
 
 	<div class="well">
@@ -27,7 +26,7 @@
 		<table border="1" class="table">
 			<thead>
 				<tr>
-					<td colspan="8">${today_month}, ${today_year}</td>
+					<td colspan="8">${today_month},${today_year}</td>
 				</tr>
 			</thead>
 			<tr>
@@ -80,23 +79,7 @@
 			<h3>agenda</h3>
 		</div>
 		<div class="modal-body">
-			<div id="agenda-body">
-				<script id="modal-template" type="text/x-handlebars-template">
-					
-					<table class="table"> 
-						{{#each .}}
-							<tr>
-								<td>name</td><td>{{name}}</td>
-								<td>label</td><td>{{label}}</td>
-								<td>priority</td><td>{{priority}}</td>
-								<td>{{month}} {{date}}, {{year}}</td>
-								<td>{{notes}}</td>
-							</tr>
-						{{/each}}
-					</table>
-					<br/>
-				</script>	
-			</div>
+			<div id="agenda-body"></div>
 		</div>
 		<div class="modal-footer">
 			<button class="btn" data-dismiss="modal" aria-hidden="true">close</button>
@@ -152,10 +135,25 @@
 	<div class="well">
 		<a href="/add">add</a>
 	</div>
-
+				
+	<script id="modal-template" type="text/x-handlebars-template">
+		<table class="table"> 
+			{{#each .}}
+				<tr>
+					<td>name</td><td>{{name}}</td>
+					<td>label</td><td>{{label}}</td>
+					<td>priority</td><td>{{priority}}</td>
+					<td>{{month}} {{date}}, {{year}}</td>
+					<td>{{notes}}</td>
+				</tr>
+			{{/each}}
+		</table>
+	</script>
+	
 </body>
 
 <script type="text/javascript" src="resources/js/home.js">
+	
 </script>
 
 </html>

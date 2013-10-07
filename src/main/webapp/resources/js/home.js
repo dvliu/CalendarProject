@@ -13,10 +13,8 @@ $(document).ready(function() {
 				$('#emptyDateModal').modal('show');
 			} else {
 				fulldata = $.parseJSON(fulldata);
-				console.log("fulldata : ", fulldata);
 				$('#dateModal').modal('show');
-				$('#metaJson').html(fulldata);
-
+				
 				var source = $("#modal-template").html();
 				var template = Handlebars.compile(source);
 				var html = template(fulldata);

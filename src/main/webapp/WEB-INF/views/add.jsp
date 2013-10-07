@@ -70,7 +70,9 @@
 					priority : $('#priority').val(),
 					notes : $('#notes').val()
 				}
-			}).done(alert("saved!"));
+			}).done(function(){
+				alert("saved!");
+			});
 		});
 	});
 </script>

@@ -98,13 +98,13 @@ public class CacheService {
 					HashMap<String, String> hit = Maps.newHashMap();
 					JsonNode metaNode = hitsArray.next();
 					JsonNode sourceNode = metaNode.path("_source");
-					hit.put("name", sourceNode.path("name").toString());
-					hit.put("priority", sourceNode.path("priority").toString());
+					hit.put("name", sourceNode.path("name").toString().replaceAll("\"", ""));
+					hit.put("priority", sourceNode.path("priority").toString().replaceAll("\"", ""));
 					hit.put("month", sourceNode.path("month").toString());
-					hit.put("label", sourceNode.path("label").toString());
+					hit.put("label", sourceNode.path("label").toString().replaceAll("\"", ""));
 					hit.put("year", sourceNode.path("year").toString());
 					hit.put("date", sourceNode.path("date").toString());
-					hit.put("notes", sourceNode.path("notes").toString());
+					hit.put("notes", sourceNode.path("notes").toString().replaceAll("\"", "").replaceAll("\\|", "").replaceAll("\\t", "").replaceAll("\t", "").replaceAll("\\n", "").replaceAll("\n", ""));
 					answer.add(hit);
 				}
 			}

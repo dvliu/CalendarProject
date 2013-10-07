@@ -15,9 +15,6 @@ $(document).ready(function() {
 				fulldata = $.parseJSON(fulldata);
 				console.log("fulldata : ", fulldata);
 				$('#dateModal').modal('show');
-				for (i in fulldata) {
-					console.log(fulldata[i].name);
-				}
 				$('#metaJson').html(fulldata);
 
 				var source = $("#modal-template").html();

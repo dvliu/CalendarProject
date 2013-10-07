@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
 	$('a#date').bind('click', function() {
 		$.ajax({
 			type : "GET",
@@ -26,7 +25,10 @@ $(document).ready(function() {
 				var source = $("#modal-template").html();
 				var template = Handlebars.compile(source);
 				var context = fulldata;
+				console.log("context -> ", context);
 				var html = template(context);
+				console.log("html -> ", html);
+				$("#agenda-body").html(html);
 			}
 		});
 	});

@@ -81,17 +81,17 @@
 			<h3>agenda</h3>
 		</div>
 		<div class="modal-body">
-			<script id="modal-template" type="text/x-handlebars-template">
-				{{#each data}}
-					<p>{{this}}</p>
-					<p>{{name}}</p>
-					<p>{{label}}</p>
-					<p>{{priority}}</p>
-					<p>{{month}} {{date}}, {{year}}</p>
-					<p>{{notes}}</p>
+			<div id="agenda-body">
+				<script id="modal-template" type="text/x-handlebars-template">
+					<p>this -> {{this}}</p>
+					<p>name -> {{name}}</p>
+					<p>label -> {{label}}</p>
+					<p>priority -> {{priority}}</p>
+					<p>month -> {{month}} {{date}}, {{year}}</p>
+					<p>notes -> {{notes}}</p>
 					<br/>
-				{{/each}}
-			</script>
+				</script>	
+			</div>
 		</div>
 		<div class="modal-footer">
 			<button class="btn" data-dismiss="modal" aria-hidden="true">close</button>

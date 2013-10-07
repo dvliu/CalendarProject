@@ -10,16 +10,16 @@
 </head>
 
 <body>
-	<div class="well">
-		<p id="today_month">${today_month}</p>
-		<p id="today_int_month">${today_int_month }</p>
-		<p id="today_year">${today_year}</p>
-		<p id="today_date">${today_day}</p>
-		<p id="today_date">${today_date }</p>
-		<p>First day of month is -> ${first_day_month}</p>
-		<p>First int day of month is -> ${first_int_day_month}</p>
-		<p>Last day of the month is -> ${last_day_month}</p>
-		<p>Week of Month -> ${week_of_month}</p>
+	<div class="well" style="display:none">
+		<span id="today_month">${today_month}</span>
+		<span id="today_int_month">${today_int_month}</span>
+		<span id="today_year">${today_year}</span>
+		<span id="today_date">${today_day}</span>
+		<span id="today_date">${today_date }</span>
+		<span>First day of month is -> ${first_day_month}</span>
+		<span>First int day of month is -> ${first_int_day_month}</span>
+		<span>Last day of the month is -> ${last_day_month}</span>
+		<span>Week of Month -> ${week_of_month}</span>
 	</div>
 
 	<div class="well">
@@ -27,7 +27,7 @@
 		<table border="1" class="table">
 			<thead>
 				<tr>
-					<td colspan="8">${today_month},${today_year}</td>
+					<td colspan="8">${today_month}, ${today_year}</td>
 				</tr>
 			</thead>
 			<tr>
@@ -148,13 +148,6 @@
 				</c:forEach>
 			</tbody>
 		</table>
-	</div>
-	<div class="well">
-		<p>daily</p>
-		<p>${today_month}${today_date},${today_year}</p>
-		<ul>
-			<li></li>
-		</ul>
 	</div>
 
 	<div class="well">

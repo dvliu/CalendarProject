@@ -22,4 +22,16 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
+	$('a#delete').bind('click', function(){
+		$.ajax({
+			type : "POST",
+			url : "delete",
+			data : {
+				tokenDelete : $(this).attr("tokenDelete")
+			}
+		}).done(function(fulldata){
+			alert("deleted");
+		});
+	});
 });

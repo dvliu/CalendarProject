@@ -12,12 +12,12 @@ public class CurrentDate {
 
 	Calendar calendar = Calendar.getInstance(Locale.US);
 	Date date = new Date();
-	
+
 	public int getMonth() {
 		SimpleDateFormat sdf = new SimpleDateFormat("MM");
 		return Integer.valueOf(sdf.format(date));
 	}
-	
+
 	public int getDate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd");
 		return Integer.valueOf(sdf.format(date));
@@ -35,6 +35,16 @@ public class CurrentDate {
 			t.printStackTrace();
 		}
 		return calendar.get(Calendar.MONTH) + 1;
+	}
+
+	public String getTime(String time) {
+		try {
+			
+
+		} catch (Throwable t) {
+			t.printStackTrace();
+		}
+		return time.replaceAll("\"", "");
 	}
 
 	public int getDate(String date) {
@@ -73,7 +83,7 @@ public class CurrentDate {
 		}
 		return null;
 	}
-	
+
 	public int getWeekOfMonth() {
 		SimpleDateFormat sdf = new SimpleDateFormat("WW");
 		return Integer.valueOf(sdf.format(date)) - 1;

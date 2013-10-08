@@ -67,15 +67,17 @@ public class HomeController {
 
 	@RequestMapping(value = "save", method = RequestMethod.POST)
 	public String save(Model model, @RequestParam(value = "date") String date, @RequestParam(value = "name") String name, @RequestParam(value = "label") String label, @RequestParam(value = "priority") String priority,
-			@RequestParam(value = "notes") String notes) {
+			@RequestParam(value = "notes") String notes, @RequestParam(value="time") String time, @RequestParam(value="estimate") String estimate) {
 		HashMap<String, Object> metadata = Maps.newHashMap();
-		metadata.put("name", name);
-		metadata.put("label", label);
-		metadata.put("priority", priority);
+		metadata.put("name", name.replaceAll("\"", ""));
+		metadata.put("label", label.replaceAll("\"", ""));
+		metadata.put("priority", priority.replaceAll("\"", ""));
 		metadata.put("year", cDate.getYear(date));
 		metadata.put("month", cDate.getMonth(date));
 		metadata.put("date", cDate.getDate(date));
-		metadata.put("notes", notes);
+		metadata.put("notes", notes.replaceAll("\"", ""));
+		metadata.put("estimate", Integer.valueOf(estimate.replaceAll("\"", "")));
+		metadata.put("time", cDate.getTime(time));
 		cacheService.index(metadata);
 		return "home";
 	}
@@ -98,7 +100,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "delete", method = RequestMethod.POST)
-	public void delete(Model model) {
-		
+	public void delete(Model model, @RequestParam(value="tokenDelete") String tokenDelete) {
+		cacheService.remove(tokenDelete);
 	}
 }

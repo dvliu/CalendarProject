@@ -3,6 +3,7 @@
 <script src="resources/bootstrap/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/bootstrap/css/bootstrap.min.css" />
 <script src="resources/js/script.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/styles.css"/>
 
 <html>
 <head>
@@ -41,11 +42,24 @@
 					</select>
 				</div>
 			</div>
+			
+			<div class="control-group">
+				<label class="control-label" for="time">time</label>
+				<div class="controls">
+					<input type="time" id="time" placeholder="..." />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="estimate">estimate</label>
+				<div class="controls">
+					<input type="text" id="estimate" placeholder="minutes" />
+				</div>
+			</div>
+			
 			<div class="control-group">
 				<label class="control-label" for="notes">notes</label>
 				<div class="controls">
-					<textarea id="notes">
-					</textarea>
+					<input type="text" id="notes" placeholder="..." />
 				</div>
 			</div>
 			<a id="save">save</a> <br /> <a id="back">back to init page</a>
@@ -68,9 +82,11 @@
 					name : $('#name').val(),
 					label : $('#label').val(),
 					priority : $('#priority').val(),
+					time : $('#time').val(),
+					estimate : $('#estimate').val(),
 					notes : $('#notes').val()
 				}
-			}).done(function(){
+			}).done(function() {
 				alert("saved!");
 			});
 		});

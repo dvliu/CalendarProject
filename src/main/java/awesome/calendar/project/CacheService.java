@@ -1,7 +1,6 @@
 package awesome.calendar.project;
 
 import static org.elasticsearch.client.Requests.createIndexRequest;
-import static org.elasticsearch.index.query.FilterBuilders.andFilter;
 import static org.elasticsearch.index.query.FilterBuilders.queryFilter;
 import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
 
@@ -9,6 +8,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import org.elasticsearch.action.delete.DeleteResponse;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.Client;
@@ -72,6 +72,8 @@ public class CacheService {
 					hit.put("year", sourceNode.path("year").toString());
 					hit.put("date", sourceNode.path("date").toString());
 					hit.put("notes", sourceNode.path("notes").toString());
+					hit.put("time", sourceNode.path("time").toString());
+					hit.put("estimate", sourceNode.path("estimate").toString());
 					answer.add(hit);
 				}
 			}
@@ -104,7 +106,10 @@ public class CacheService {
 					hit.put("label", sourceNode.path("label").toString().replaceAll("\"", ""));
 					hit.put("year", sourceNode.path("year").toString());
 					hit.put("date", sourceNode.path("date").toString());
-					hit.put("notes", sourceNode.path("notes").toString().replaceAll("\"", "").replaceAll("\\|", "").replaceAll("\\t", "").replaceAll("\t", "").replaceAll("\\n", "").replaceAll("\n", ""));
+					hit.put("time", sourceNode.path("time").toString());
+					hit.put("estimate", sourceNode.path("estimate").toString());
+					hit.put("notes",
+							sourceNode.path("notes").toString().replaceAll("\"", "").replaceAll("\\|", "").replaceAll("\\t", "").replaceAll("\t", "").replaceAll("\\n", "").replaceAll("\n", ""));
 					answer.add(hit);
 				}
 			}
@@ -115,41 +120,15 @@ public class CacheService {
 		return answer;
 	}
 
-	@Deprecated
-	public List<HashMap<String, String>> searchDate(String month, int date) {
-		List<HashMap<String, String>> answer = Lists.newArrayList();
-		try {
-			QueryFilterBuilder monthFilter = queryFilter(matchQuery("month", month));
-			QueryFilterBuilder dateFilter = queryFilter(matchQuery("date", String.valueOf(date)));
-			SearchResponse response = client.prepareSearch(index).setTypes(type).setFilter(andFilter(monthFilter, dateFilter)).execute().actionGet();
-
-			long hits = response.getHits().getTotalHits();
-			if (hits < 1) {
-				// oops
-			} else {
-				JsonNode rootNode = mapper.readTree(response.toString());
-				Iterator<JsonNode> hitsArray = rootNode.path("hits").path("hits").elements();
-				while (hitsArray.hasNext()) {
-					HashMap<String, String> hit = Maps.newHashMap();
-					JsonNode metaNode = hitsArray.next();
-					JsonNode sourceNode = metaNode.path("_source");
-					hit.put("name", sourceNode.path("name").toString());
-					hit.put("priority", sourceNode.path("priority").toString());
-					hit.put("month", sourceNode.path("month").toString());
-					hit.put("label", sourceNode.path("label").toString());
-					hit.put("year", sourceNode.path("year").toString());
-					hit.put("date", sourceNode.path("date").toString());
-					hit.put("notes", sourceNode.path("notes").toString());
-					answer.add(hit);
-				}
-			}
-		} catch (Throwable t) {
+	public void remove(String token) {
+		try{
+//			TODO: modify token
+			QueryFilterBuilder tokenFilter = queryFilter(matchQuery("name", token));
+			DeleteResponse response = client.prepareDelete(index, type, "*").execute().actionGet();
+//			DeleteResponse response = client.prepareDelete(index).setTypes(type).setFilter(tokenFilter).execute().actionGet();
+		} catch (Throwable t){
 			t.printStackTrace();
 		}
-		return answer;
-	}
-
-	public void remove() {
 	}
 
 }

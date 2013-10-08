@@ -87,7 +87,6 @@ public class CacheService {
 		try {
 			QueryFilterBuilder monthFilter = queryFilter(matchQuery("month", month));
 			SearchResponse response = client.prepareSearch(index).setTypes(type).setFilter(monthFilter).execute().actionGet();
-
 			long hits = response.getHits().getTotalHits();
 			if (hits < 1) {
 				// oops
@@ -108,7 +107,6 @@ public class CacheService {
 					answer.add(hit);
 				}
 			}
-
 		} catch (Throwable t) {
 			t.printStackTrace();
 		}

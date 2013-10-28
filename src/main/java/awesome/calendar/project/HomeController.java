@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
@@ -33,6 +34,7 @@ public class HomeController {
 
 		String firstDayOfMonth = cDate.getFirstDayOfMonth();
 		int firstIntDayOfMonth = cDate.getIntFirstDayOfMonth(firstDayOfMonth);
+		model.addAttribute("monthDictionaryList", cacheService.searchMonth(cDate.getMonth()));
 
 		model.addAttribute("today_month", cDate.getStringMonth(cDate.getMonth()));
 		model.addAttribute("today_int_month", cDate.getMonth());
@@ -67,15 +69,17 @@ public class HomeController {
 
 	@RequestMapping(value = "save", method = RequestMethod.POST)
 	public String save(Model model, @RequestParam(value = "date") String date, @RequestParam(value = "name") String name, @RequestParam(value = "label") String label, @RequestParam(value = "priority") String priority,
-			@RequestParam(value = "notes") String notes) {
+			@RequestParam(value = "notes") String notes, @RequestParam(value = "time") String time, @RequestParam(value = "estimate") String estimate) {
 		HashMap<String, Object> metadata = Maps.newHashMap();
-		metadata.put("name", name);
-		metadata.put("label", label);
-		metadata.put("priority", priority);
+		metadata.put("name", name.replaceAll("\"", ""));
+		metadata.put("label", label.replaceAll("\"", ""));
+		metadata.put("priority", priority.replaceAll("\"", ""));
 		metadata.put("year", cDate.getYear(date));
 		metadata.put("month", cDate.getMonth(date));
 		metadata.put("date", cDate.getDate(date));
-		metadata.put("notes", notes);
+		metadata.put("notes", notes.replaceAll("\"", ""));
+		metadata.put("estimate", Integer.valueOf(estimate.replaceAll("\"", "")));
+		metadata.put("time", cDate.getTime(time));
 		cacheService.index(metadata);
 		return "home";
 	}
@@ -84,7 +88,7 @@ public class HomeController {
 	@RequestMapping(value = "display", method = RequestMethod.GET)
 	public String display(Model model, @RequestParam(value = "date") String date, @RequestParam(value = "month") String month) throws Throwable {
 		List<HashMap<String, String>> answer = Lists.newArrayList();
-		List<HashMap<String, String>> searchResults = cacheService.searchMonth(month);
+		List<HashMap<String, String>> searchResults = cacheService.searchMonth(Integer.valueOf(month));
 		for (HashMap<String, String> result : searchResults) {
 			if (result.get("date").equals(date)) {
 				answer.add(result);
@@ -98,7 +102,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "delete", method = RequestMethod.POST)
-	public void delete(Model model) {
-		
+	public void delete(Model model, @RequestParam(value = "tokenDelete") String tokenDelete) {
+		cacheService.remove(tokenDelete);
 	}
 }

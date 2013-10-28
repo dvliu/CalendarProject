@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
 	$('a#date').bind('click', function() {
 		$.ajax({
 			type : "GET",
@@ -14,12 +15,24 @@ $(document).ready(function() {
 			} else {
 				fulldata = $.parseJSON(fulldata);
 				$('#dateModal').modal('show');
-				
+
 				var source = $("#modal-template").html();
 				var template = Handlebars.compile(source);
 				var html = template(fulldata);
 				$("#agenda-body").html(html);
 			}
+		});
+	});
+
+	$('a#delete').bind('click', function() {
+		$.ajax({
+			type : "POST",
+			url : "delete",
+			data : {
+				tokenDelete : $(this).attr("tokenDelete")
+			}
+		}).done(function(fulldata) {
+			alert("deleted");
 		});
 	});
 });

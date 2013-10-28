@@ -38,6 +38,7 @@
 				<th>fri</th>
 				<th>sat</th>
 			</tr>
+			<c:set var="monthDictionary" value="${monthDictionary}" />
 			<tbody>
 				<c:forEach var="i" begin="0" end="${last_day_month }" step="7">
 					<tr>
@@ -49,7 +50,14 @@
 								</c:when>
 								<c:otherwise>
 									<c:if test="${sum - first_int_day_month <= last_day_month}">
-										<td><a href="#" id="date">${sum - first_int_day_month}</a></td>
+										<td><a href="#" id="date">${sum - first_int_day_month}</a>
+											<ul id="entriesList">
+												<c:forEach var="monthDictionary" items="${monthDictionaryList}">
+													<c:if test="${monthDictionary.date == (sum - first_int_day_month)}">
+														<li>${monthDictionary.name } -- ${monthDictionary.priority }</li>
+													</c:if>
+												</c:forEach>
+											</ul></td>
 									</c:if>
 								</c:otherwise>
 							</c:choose>
@@ -123,10 +131,10 @@
 							</c:otherwise>
 						</c:choose>
 					</c:if>
-					<c:if test="${today_date > 7 - first_int_day_month}">
+					<c:if
+						test="${(today_date > 7 - first_int_day_month) and ((i + (7 * week_of_month) - first_int_day_month) <= last_day_month)}">
 						<td><a href="#" id="date">${i + (7 * week_of_month) - first_int_day_month}</a></td>
 					</c:if>
-
 				</c:forEach>
 			</tbody>
 		</table>
@@ -135,21 +143,34 @@
 	<div class="well">
 		<a href="/add">add</a>
 	</div>
-				
+
 	<script id="modal-template" type="text/x-handlebars-template">
-		<table class="table"> 
-			{{#each .}}
+		<table class="table" border="1"> 
+			<thead>
 				<tr>
-					<td>name</td><td>{{name}}</td>
-					<td>label</td><td>{{label}}</td>
-					<td>priority</td><td>{{priority}}</td>
-					<td>{{month}} {{date}}, {{year}}</td>
-					<td>{{notes}}</td>
+					<td>name</td>
+					<td>label</td>
+					<td>priority</td>
+					<td>date</td>
+					<td>notes</td>
+					<td>careful!</td>
 				</tr>
+			</thead>
+			{{#each .}}
+				<tbody>
+					<tr id="entry">
+						<td id="entry-name">{{name}}</td>		
+						<td id="entry-label">{{label}}</td>
+						<td id="entry-priority">{{priority}}</td>
+						<td id="entry-date">{{month}} {{date}}, {{year}}</td>
+						<td id="entry-notes">{{notes}}</td>
+						<td><a id="delete" tokenDelete="{{name}}">DELETE</a></td>
+					</tr>
+				</tbody>
 			{{/each}}
 		</table>
 	</script>
-	
+
 </body>
 
 <script type="text/javascript" src="resources/js/home.js">

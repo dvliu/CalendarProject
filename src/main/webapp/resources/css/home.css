@@ -1,5 +1,5 @@
 #weekly_calendar_section {
-	height:410px;
+	height:435px;
 }
 
 #weekly_calendar_times{
@@ -32,16 +32,19 @@
 	 max-width: 95%
 }
 
+#weekly_calendar_row {
+	height: 317px;
+}
+
 #weekly_calendar td {
 	max-width: 145px;
 	width: 13.57%;
 }
 
-#calendar_day_section {
-	max-width: 95%;
-}
 .calendar_day {
 	list-style-type: none;
 	display: inline-block;
-	height: 100px;
+	height: 260px;
+	overflow: hidden;
+	margin-top: 29px;
 }

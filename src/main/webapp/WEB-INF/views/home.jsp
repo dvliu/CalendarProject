@@ -99,28 +99,29 @@
 				</c:forEach>
 			</tr>
 		</table>
-		<ul class="calendar_day" id="calendar_sunday">
-			<li>sunday</li>
-		</ul>
-		<ul class="calendar_day" id="calendar_monday">
-			<li>monday</li>
-		</ul>
-		<ul class="calendar_day" id="calendar_tuesday">
-			<li>tuesday</li>
-		</ul>
-		<ul class="calendar_day" id="calendar_wednesday">
-			<li>wednesday</li>
-		</ul>
-		<ul class="calendar_day" id="calendar_thursday">
-			<li>thursday</li>
-		</ul>
-		<ul class="calendar_day" id="calendar_friday">
-			<li>friday</li>
-		</ul>
-		<ul class="calendar_day" id="calendar_saturday">
-			<li>saturday</li>
-		</ul>
-		
+		<div id="calendar_day_section">
+			<ul class="calendar_day" id="calendar_sunday">
+				<li>sun</li>
+			</ul>
+			<ul class="calendar_day" id="calendar_monday">
+				<li>mon</li>
+			</ul>
+			<ul class="calendar_day" id="calendar_tuesday">
+				<li>tue</li>
+			</ul>
+			<ul class="calendar_day" id="calendar_wednesday">
+				<li>wed</li>
+			</ul>
+			<ul class="calendar_day" id="calendar_thursday">
+				<li>thu</li>
+			</ul>
+			<ul class="calendar_day" id="calendar_friday">
+				<li>fri</li>
+			</ul>
+			<ul class="calendar_day" id="calendar_saturday">
+				<li>sat</li>
+			</ul>
+		</div>
 	</div>
 
 	<div class="well">

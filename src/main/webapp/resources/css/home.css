@@ -11,7 +11,6 @@
 }
 
 
-
 #weekly_calendar_controls {
 	display: inline-block;
 	float: left;
@@ -34,12 +33,15 @@
 }
 
 #weekly_calendar td {
-	width: 145px;
+	max-width: 145px;
+	width: 13.57%;
 }
 
+#calendar_day_section {
+	max-width: 95%;
+}
 .calendar_day {
 	list-style-type: none;
 	display: inline-block;
 	height: 100px;
-	width: 145px;
 }

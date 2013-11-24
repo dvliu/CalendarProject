@@ -1,0 +1,45 @@
+#weekly_calendar_section {
+	height:410px;
+}
+
+#weekly_calendar_times{
+	list-style-type: none; 
+	margin-right: 2px;
+	height: 265px;
+	overflow: hidden;
+	
+}
+
+
+
+#weekly_calendar_controls {
+	display: inline-block;
+	float: left;
+	margin-top: 110px;
+	max-width:5%;
+}
+
+#weekly_calendar_scroll_up {
+	font-size:20px;
+	cursor: pointer;
+}
+
+#weekly_calendar_scroll_down{
+	cursor: pointer;
+}
+
+#weekly_calendar {
+	display: inlineblock;
+	 max-width: 95%
+}
+
+#weekly_calendar td {
+	width: 145px;
+}
+
+.calendar_day {
+	list-style-type: none;
+	display: inline-block;
+	height: 100px;
+	width: 145px;
+}

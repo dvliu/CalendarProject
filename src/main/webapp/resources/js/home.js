@@ -23,6 +23,16 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
+	$('#weekly_calendar_scroll_up').click(function(){
+	$('.calendar_day').animate({scrollTop: '-=20px'}, 400);
+	});
+	
+	
+	$('#weekly_calendar_scroll_down').click(function(){
+		$('#weekly_calendar_times').animate({scrollTop: '+=20px'}, 400);
+		$('.calendar_day').animate({scrollTop: '+=20px'}, 400);
+	});
 
 	$('a#delete').bind('click', function() {
 		$.ajax({

@@ -58,7 +58,9 @@
 		<table id="weekly_calendar" border="1" class="table">
 			<thead>
 				<tr>
-					<td colspan="8">week of ${today_month} ${today_date}</td>
+					<td colspan="8">
+					week of ${today_month} ${today_date}
+					</td>
 				</tr>
 			</thead>
 			<tr>

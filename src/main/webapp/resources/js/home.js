@@ -1,5 +1,18 @@
 $(document).ready(function() {
-
+	
+	$('#weeklyCollapse').collapse('show');
+	
+	$('#weekly_accordion_toggle').bind('click', function(){
+		$('#weeklyCollapse').collapse('show');
+		$('#monthlyCollapse').collapse('hide');
+	});
+	
+	$('#monthly_accordion_toggle').bind('click', function(){
+		$('#weeklyCollapse').collapse('hide');
+		$('#monthlyCollapse').collapse('show');
+		
+	});
+	
 	$('a#date').bind('click', function() {
 		$.ajax({
 			type : "GET",

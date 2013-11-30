@@ -30,7 +30,6 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String init(Model model) {
 		cacheService.init();
-		model.addAttribute("title", "calendar");
 
 		String firstDayOfMonth = cDate.getFirstDayOfMonth();
 		int firstIntDayOfMonth = cDate.getIntFirstDayOfMonth(firstDayOfMonth);
@@ -46,6 +45,8 @@ public class HomeController {
 		model.addAttribute("today_day", cDate.getStringDayOfWeek());
 		model.addAttribute("week_of_month", cDate.getWeekOfMonth());
 
+		
+		
 		return "home";
 	}
 

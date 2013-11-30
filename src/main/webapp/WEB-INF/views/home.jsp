@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="resources/css/home.css" />
 <html>
 <head>
-<title>${title}</title>
+<title>schedutary</title>
 </head>
 
 <body>

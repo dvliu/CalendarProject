@@ -12,14 +12,16 @@
 </head>
 
 <body>
-	<div class="well" style="display: none; ">
-		<span id="today_month">${today_month}</span> <span
-			id="today_int_month">${today_int_month}</span> <span id="today_year">${today_year}</span>
-		<span id="today_date">${today_day}</span> <span id="today_date">${today_date }</span>
-		<span>First day of month is -> ${first_day_month}</span> <span>First
-			int day of month is -> ${first_int_day_month}</span> <span>Last day
-			of the month is -> ${last_day_month}</span> <span>Week of Month ->
-			${week_of_month}</span>
+	<div class="well" style="display: none;">
+		<span id="today_month">${today_month}</span> 
+		<span id="today_int_month">${today_int_month}</span> 
+		<span id="today_year">${today_year}</span>
+		<span id="today_date">${today_day}</span> 
+		<span id="today_date">${today_date }</span>
+		<span id="first_day_of_month">${first_day_month}</span> 
+		<span id="first_int_day_of_month">${first_int_day_month}</span> 
+		<span id="last_day_of_month">${last_day_month}</span> 
+		<span id="week_of_month">${week_of_month}</span>
 	</div>
 
 	<div class="accordion" id="calendarAccordion">

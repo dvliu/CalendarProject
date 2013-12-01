@@ -44,12 +44,17 @@ public class HomeController {
 		model.addAttribute("first_int_day_month", firstIntDayOfMonth);
 		model.addAttribute("today_day", cDate.getStringDayOfWeek());
 		model.addAttribute("week_of_month", cDate.getWeekOfMonth());
-
-		
-		
 		return "home";
 	}
-
+	
+	@RequestMapping(value = "getDataForWeek", method = RequestMethod.POST)
+	public String getDataForWeek(Model model, @RequestParam(value = "month") String month, @RequestParam(value="date") String date){
+		String answer = null;
+		
+		
+		return answer;
+	}
+	
 	@RequestMapping(value = "add", method = RequestMethod.GET)
 	public String add(Model model) {
 		model.addAttribute("title", "add");

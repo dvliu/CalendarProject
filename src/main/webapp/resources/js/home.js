@@ -1,5 +1,16 @@
 $(document).ready(function() {
 	
+	var data = null;
+	
+	$.ajax({
+		type : "POST",
+		url : "getDataForWeek",
+		data : {
+			month : $('#today_int_month').html(),
+			
+		}
+	});
+	
 	$('#weeklyCollapse').collapse('show');
 	
 	$('#weekly_accordion_toggle').bind('click', function(){
@@ -10,7 +21,6 @@ $(document).ready(function() {
 	$('#monthly_accordion_toggle').bind('click', function(){
 		$('#weeklyCollapse').collapse('hide');
 		$('#monthlyCollapse').collapse('show');
-		
 	});
 	
 	$('a#date').bind('click', function() {

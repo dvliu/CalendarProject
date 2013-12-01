@@ -92,33 +92,33 @@
 												<td></td>
 											</c:when>
 											<c:otherwise>
-												<td>
-													<a href="#" id="date" style="display: block">${i - first_int_day_month}</a>
+												<td>		
+												<a href="#" id="date" style="display: block">${i - first_int_day_month}</a>
 													<ul class="calendar_day">
-														<li style="font-size:14px; display:block">12pm</li>
-														<li style="font-size:14px; display:block">1am</li>
-														<li style="font-size:14px; display:block">2am</li>
-														<li style="font-size:14px; display:block">3am</li>
-														<li style="font-size:14px; display:block">4am</li>
-														<li style="font-size:14px; display:block">5am</li>
-														<li style="font-size:14px; display:block">6am</li>
-														<li style="font-size:14px; display:block">7am</li>
-														<li style="font-size:14px; display:block">8am</li>
-														<li style="font-size:14px; display:block">9am</li>
-														<li style="font-size:14px; display:block">10am</li>
-														<li style="font-size:14px; display:block">11am</li>
-														<li style="font-size:14px; display:block">12am</li>
-														<li style="font-size:14px; display:block">1pm</li>
-														<li style="font-size:14px; display:block">2pm</li>
-														<li style="font-size:14px; display:block">3pm</li>
-														<li style="font-size:14px; display:block">4pm</li>
-														<li style="font-size:14px; display:block">5pm</li>
-														<li style="font-size:14px; display:block">6pm</li>
-														<li style="font-size:14px; display:block">7pm</li>
-														<li style="font-size:14px; display:block">8pm</li>
-														<li style="font-size:14px; display:block">9pm</li>
-														<li style="font-size:14px; display:block">10pm</li>
-														<li style="font-size:14px; display:block">11pm</li>
+														<li id="${i-first_int_day_month}_12pm" style="font-size:14px; display:block">12pm</li>
+														<li id="${i-first_int_day_month}_1am" style="font-size:14px; display:block">1am</li>
+														<li id="${i-first_int_day_month}_2am" style="font-size:14px; display:block">2am</li>
+														<li id="${i-first_int_day_month}_3am" style="font-size:14px; display:block">3am</li>
+														<li id="${i-first_int_day_month}_4am" style="font-size:14px; display:block">4am</li>
+														<li id="${i-first_int_day_month}_5am" style="font-size:14px; display:block">5am</li>
+														<li id="${i-first_int_day_month}_6am" style="font-size:14px; display:block">6am</li>
+														<li id="${i-first_int_day_month}_7am" style="font-size:14px; display:block">7am</li>
+														<li id="${i-first_int_day_month}_8am" style="font-size:14px; display:block">8am</li>
+														<li id="${i-first_int_day_month}_9am" style="font-size:14px; display:block">9am</li>
+														<li id="${i-first_int_day_month}_10am" style="font-size:14px; display:block">10am</li>
+														<li id="${i-first_int_day_month}_11am" style="font-size:14px; display:block">11am</li>
+														<li id="${i-first_int_day_month}_12am" style="font-size:14px; display:block">12am</li>
+														<li id="${i-first_int_day_month}_1pm" style="font-size:14px; display:block">1pm</li>
+														<li id="${i-first_int_day_month}_2pm" style="font-size:14px; display:block">2pm</li>
+														<li id="${i-first_int_day_month}_3pm" style="font-size:14px; display:block">3pm</li>
+														<li id="${i-first_int_day_month}_4pm" style="font-size:14px; display:block">4pm</li>
+														<li id="${i-first_int_day_month}_5pm" style="font-size:14px; display:block">5pm</li>
+														<li id="${i-first_int_day_month}_6pm" style="font-size:14px; display:block">6pm</li>
+														<li id="${i-first_int_day_month}_7pm" style="font-size:14px; display:block">7pm</li>
+														<li id="${i-first_int_day_month}_8pm" style="font-size:14px; display:block">8pm</li>
+														<li id="${i-first_int_day_month}_9pm" style="font-size:14px; display:block">9pm</li>
+														<li id="${i-first_int_day_month}_10pm" style="font-size:14px; display:block">10pm</li>
+														<li id="${i-first_int_day_month}_11pm" style="font-size:14px; display:block">11pm</li>
 													</ul>
 												</td>
 											</c:otherwise>
@@ -131,31 +131,31 @@
 								<td>
 									<a href="#" style="display: block" id="date">${i + (7 * week_of_month) - first_int_day_month}</a>
 									<ul class="calendar_day">
-										<li style="font-size:14px; display:block">12pm</li>
-										<li style="font-size:14px; display:block">1am</li>
-										<li style="font-size:14px; display:block">2am</li>
-										<li style="font-size:14px; display:block">3am</li>
-										<li style="font-size:14px; display:block">4am</li>
-										<li style="font-size:14px; display:block">5am</li>
-										<li style="font-size:14px; display:block">6am</li>
-										<li style="font-size:14px; display:block">7am</li>
-										<li style="font-size:14px; display:block">8am</li>
-										<li style="font-size:14px; display:block">9am</li>
-										<li style="font-size:14px; display:block">10am</li>
-										<li style="font-size:14px; display:block">11am</li>
-										<li style="font-size:14px; display:block">12am</li>
-										<li style="font-size:14px; display:block">1pm</li>
-										<li style="font-size:14px; display:block">2pm</li>
-										<li style="font-size:14px; display:block">3pm</li>
-										<li style="font-size:14px; display:block">4pm</li>
-										<li style="font-size:14px; display:block">5pm</li>
-										<li style="font-size:14px; display:block">6pm</li>
-										<li style="font-size:14px; display:block">7pm</li>
-										<li style="font-size:14px; display:block">8pm</li>
-										<li style="font-size:14px; display:block">9pm</li>
-										<li style="font-size:14px; display:block">10pm</li>
-										<li style="font-size:14px; display:block">11pm</li>
-									</ul>
+										<li id="${i + (7 * week_of_month) - first_int_day_month}_12pm" style="font-size:14px; display:block">12pm</li>
+											<li id="${i + (7 * week_of_month) - first_int_day_month}_1am" style="font-size:14px; display:block">1am</li>
+											<li id="${i + (7 * week_of_month) - first_int_day_month}_2am" style="font-size:14px; display:block">2am</li>
+											<li id="${i + (7 * week_of_month) - first_int_day_month}_3am" style="font-size:14px; display:block">3am</li>
+											<li id="${i + (7 * week_of_month) - first_int_day_month}_4am" style="font-size:14px; display:block">4am</li>
+											<li id="${i + (7 * week_of_month) - first_int_day_month}_5am" style="font-size:14px; display:block">5am</li>
+											<li id="${i + (7 * week_of_month) - first_int_day_month}_6am" style="font-size:14px; display:block">6am</li>
+											<li id="${i + (7 * week_of_month) - first_int_day_month}_7am" style="font-size:14px; display:block">7am</li>
+											<li id="${i + (7 * week_of_month) - first_int_day_month}_8am" style="font-size:14px; display:block">8am</li>
+											<li id="${i + (7 * week_of_month) - first_int_day_month}_9am" style="font-size:14px; display:block">9am</li>
+											<li id="${i + (7 * week_of_month) - first_int_day_month}_10am" style="font-size:14px; display:block">10am</li>
+											<li id="${i + (7 * week_of_month) - first_int_day_month}_11am" style="font-size:14px; display:block">11am</li>
+											<li id="${i + (7 * week_of_month) - first_int_day_month}_12am" style="font-size:14px; display:block">12am</li>
+											<li id="${i + (7 * week_of_month) - first_int_day_month}_1pm" style="font-size:14px; display:block">1pm</li>
+											<li id="${i + (7 * week_of_month) - first_int_day_month}_2pm" style="font-size:14px; display:block">2pm</li>
+											<li id="${i + (7 * week_of_month) - first_int_day_month}_3pm" style="font-size:14px; display:block">3pm</li>
+											<li id="${i + (7 * week_of_month) - first_int_day_month}_4pm" style="font-size:14px; display:block">4pm</li>
+											<li id="${i + (7 * week_of_month) - first_int_day_month}_5pm" style="font-size:14px; display:block">5pm</li>
+											<li id="${i + (7 * week_of_month) - first_int_day_month}_6pm" style="font-size:14px; display:block">6pm</li>
+											<li id="${i + (7 * week_of_month) - first_int_day_month}_7pm" style="font-size:14px; display:block">7pm</li>
+											<li id="${i + (7 * week_of_month) - first_int_day_month}_8pm" style="font-size:14px; display:block">8pm</li>
+											<li id="${i + (7 * week_of_month) - first_int_day_month}_9pm" style="font-size:14px; display:block">9pm</li>
+											<li id="${i + (7 * week_of_month) - first_int_day_month}_10pm" style="font-size:14px; display:block">10pm</li>
+											<li id="${i + (7 * week_of_month) - first_int_day_month}_11pm" style="font-size:14px; display:block">11pm</li>
+										</ul>
 								</td>						
 							</c:if>
 						</c:forEach>

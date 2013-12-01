@@ -4,5 +4,6 @@ public enum Priority {
 
 	CRITICAL,
 	IMPORTANT,
-	FUN
+	FUN;
+	
 }

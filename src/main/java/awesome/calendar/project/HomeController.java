@@ -42,35 +42,25 @@ public class HomeController {
 		model.addAttribute("last_day_month", cDate.getLastDayOfMonth(cDate.getMonth()));
 		model.addAttribute("first_day_month", firstDayOfMonth);
 		model.addAttribute("first_int_day_month", firstIntDayOfMonth);
-		model.addAttribute("today_day", cDate.getStringDayOfWeek());
+//		model.addAttribute("today_day", cDate.getStringDayOfWeek());
 		model.addAttribute("week_of_month", cDate.getWeekOfMonth());
+		
 		return "home";
 	}
 	
+	@ResponseBody
 	@RequestMapping(value = "getDataForWeek", method = RequestMethod.POST)
-	public String getDataForWeek(Model model, @RequestParam(value = "month") String month, @RequestParam(value="date") String date){
-		String answer = null;
-		
-		
-		return answer;
+	public String getDataForWeek(Model model, @RequestParam(value="today_date")long todayDate, @RequestParam(value = "month") long month, @RequestParam(value="week_of_month") long weekOfMonth, @RequestParam(value="first_int_day_of_month") long firstIntDayOfMonth) throws Throwable{
+		List<HashMap<String, String>> answer = cacheService.searchWeek(month, weekOfMonth, todayDate, firstIntDayOfMonth);
+		return mapper.writeValueAsString(answer);
 	}
 	
 	@RequestMapping(value = "add", method = RequestMethod.GET)
 	public String add(Model model) {
-		model.addAttribute("title", "add");
-		List<String> prioritiesList = processPriorities();
+		List<String> prioritiesList = cacheService.processPriorities();
 		model.addAttribute("priorities", prioritiesList);
 
 		return "add";
-	}
-
-	private List<String> processPriorities() {
-		List<String> prioritiesList = Lists.newArrayList();
-		for (Priority p : Priority.values()) {
-			String priority = p.toString().toLowerCase();
-			prioritiesList.add(priority);
-		}
-		return prioritiesList;
 	}
 
 	@RequestMapping(value = "save", method = RequestMethod.POST)

@@ -7,7 +7,7 @@
 
 <html>
 <head>
-<title>${title}</title>
+<title>add event || schedutary</title>
 </head>
 
 <body>

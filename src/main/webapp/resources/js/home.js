@@ -1,14 +1,17 @@
 $(document).ready(function() {
 	
-	var data = null;
-	
 	$.ajax({
 		type : "POST",
 		url : "getDataForWeek",
 		data : {
+			today_date : $('#today_date').html(),
 			month : $('#today_int_month').html(),
-			
+			week_of_month : $('#week_of_month').html(),
+			first_int_day_of_month : $('#first_int_day_of_month').html()
 		}
+	
+	}).done(function(data) {
+		console.log('data: ', data);
 	});
 	
 	$('#weeklyCollapse').collapse('show');

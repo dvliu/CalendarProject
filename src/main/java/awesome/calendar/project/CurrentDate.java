@@ -47,6 +47,16 @@ public class CurrentDate {
 		return time.replaceAll("\"", "");
 	}
 
+	public int getDay(String date) {
+		try {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			calendar.setTime(sdf.parse(date));
+		} catch (Throwable t) {
+			t.printStackTrace();
+		}
+		return calendar.get(Calendar.DAY_OF_WEEK);
+	}
+	
 	public int getDate(String date) {
 		try {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -90,7 +100,7 @@ public class CurrentDate {
 	}
 
 	public String getStringDayOfWeek() {
-		switch (getDate()) {
+		switch (getDay(String.valueOf(getDate()))) {
 		case 0:
 			return "mon";
 		case 1:

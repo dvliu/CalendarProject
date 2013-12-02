@@ -12,6 +12,7 @@ $(document).ready(function() {
 	
 	}).done(function(data) {
 		console.log('data: ', data);
+		
 	});
 	
 	$('#weeklyCollapse').collapse('show');

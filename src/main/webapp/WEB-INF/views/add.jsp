@@ -7,7 +7,7 @@
 
 <html>
 <head>
-<title>add event || schedutary</title>
+<title>add || schedutary</title>
 </head>
 
 <body>
@@ -88,6 +88,10 @@
 				}
 			}).done(function() {
 				alert("saved!");
+				$.ajax({
+					url : "/",
+					type : "GET"
+				});
 			});
 		});
 	});

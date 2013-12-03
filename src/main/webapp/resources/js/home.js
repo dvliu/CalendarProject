@@ -12,6 +12,8 @@ $(document).ready(function() {
 	
 	}).done(function(data) {
 		console.log('data: ', data);
+		var dataJson = $.parseJSON(data);
+		console.log('dataJson', dataJson);
 		
 	});
 	

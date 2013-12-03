@@ -1,5 +1,7 @@
 $(document).ready(function() {
 	
+	var dataJson;
+	
 	$.ajax({
 		type : "POST",
 		url : "getDataForWeek",
@@ -12,7 +14,7 @@ $(document).ready(function() {
 	
 	}).done(function(data) {
 		console.log('data: ', data);
-		var dataJson = $.parseJSON(data);
+		dataJson = $.parseJSON(data);
 		console.log('dataJson', dataJson);
 		
 	});

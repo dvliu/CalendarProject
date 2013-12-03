@@ -204,7 +204,7 @@
 												<ul id="entriesList">
 													<c:forEach var="monthDictionary" items="${monthDictionaryList}">
 														<c:if test="${monthDictionary.date == (sum - first_int_day_month)}">
-															<li>${monthDictionary.npm ||e } -- ${monthDictionary.priority }</li>
+															<li>${monthDictionary.name } -- ${monthDictionary.priority }</li>
 														</c:if>
 													</c:forEach>
 												</ul></td>

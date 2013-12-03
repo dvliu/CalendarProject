@@ -61,6 +61,13 @@ $(document).ready(function() {
 		$('#weekly_calendar_times').animate({scrollTop: '+=20px'}, 400);
 		$('.calendar_day').animate({scrollTop: '+=20px'}, 400);
 	});
+	
+	Handlebars.registerHelper('if_eq', function(a, b, opts) {
+	    if(a == b) // Or ===
+	        return opts.fn(this);
+	    else
+	        return opts.inverse(this);
+	});
 
 	$('a#delete').bind('click', function() {
 		$.ajax({

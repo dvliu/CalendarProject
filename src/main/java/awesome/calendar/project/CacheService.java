@@ -165,7 +165,7 @@ public class CacheService {
 					hit.put("label", sourceNode.path("label").toString().replaceAll("\"", ""));
 					hit.put("year", sourceNode.path("year").toString());
 					hit.put("date", sourceNode.path("date").toString());
-					hit.put("time", sourceNode.path("time").toString());
+					hit.put("time", sourceNode.path("time").toString().replaceAll("\"", ""));
 					hit.put("estimate", sourceNode.path("estimate").toString());
 					hit.put("notes", sourceNode.path("notes").toString().replaceAll("\"", "").replaceAll("\\|", "").replaceAll("\\t", "").replaceAll("\t", "").replaceAll("\\n", "").replaceAll("\n", ""));
 					answer.add(hit);

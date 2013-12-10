@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-	var dataJson;
-
 	$.ajax({
 		type : "POST",
 		url : "getDataForWeek",
@@ -14,24 +12,20 @@ $(document).ready(function() {
 
 	}).done(function(data) {
 		console.log('data: ', data);
-		dataJson = $.parseJSON(data);
+		var dataJson = $.parseJSON(data);
 		console.log('dataJson', dataJson);
 
 		$('.calendar_day li').each(function(i) {
-			var compareId;
 			var indexId = $(this).attr('id');
-			
 			for ( var i in dataJson) {
-				compareId = dataJson[i].date + "_" + dataJson[i].time;
+				var compareId = dataJson[i].date + "_" + dataJson[i].time;
 				compareId = compareId.replace(":00", "");
 				if(indexId == compareId){
 					console.log(indexId);
 					document.getElementById(compareId).innerHTML = dataJson[i].name;
 				}
 			};
-			
 		});
-
 	});
 
 	$('#weeklyCollapse').collapse('show');
@@ -45,6 +39,40 @@ $(document).ready(function() {
 		$('#weeklyCollapse').collapse('hide');
 		$('#monthlyCollapse').collapse('show');
 	});
+	
+	$('#week_forward').bind('click', function(){
+		var todayDate = $('#today_date').html();
+		todayDate = parseInt(todayDate) + 7;
+		var todayMonth = $('#today_int_month').html();
+		var todayYear = $('#today_year').html();
+		var lastIntDayOfMonth = $('#last_day_of_month').html();
+		if (todayDate + 7 > lastIntDayOfMonth){
+			todayDate = (todayDate + 7) - lastIntDayOfMonth;
+			var months = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+			var monthIndex = months.indexOf(todayMonth);
+			if(monthIndex == 11){
+				monthIndex = -1;
+				todayYear + 1;
+			}
+			todayMonth = months[monthIndex+1];
+		}
+		$('#week_forward').attr('href', "/?date=" + todayDate + "&month=" + todayMonth + "&year=" + todayYear);
+//		$.ajax({
+//			type : "GET",
+//			url : "/",
+//			data : {
+//				date : todayDate,
+//				month : todayMonth,
+//				year : todayYear
+//			}
+//		});
+	});
+	
+	$('#week_backward').bind('click', function(){
+		$.ajax({	
+			
+		}).done(alert("done"));
+	});	
 
 	$('a#date').bind('click', function() {
 		$.ajax({
@@ -100,3 +128,4 @@ $(document).ready(function() {
 		});
 	});
 });
+		

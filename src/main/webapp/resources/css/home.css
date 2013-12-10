@@ -7,7 +7,6 @@
 	margin-right: 2px;
 	height: 265px;
 	overflow: hidden;
-	
 }
 
 #weekly_calendar_controls {
@@ -38,6 +37,12 @@
 #weekly_calendar td {
 	max-width: 145px;
 	width: 13.57%;
+}
+
+#calendar_week {
+	display:inline; 
+	position: absolute; 
+	left:40%;
 }
 
 .calendar_day {

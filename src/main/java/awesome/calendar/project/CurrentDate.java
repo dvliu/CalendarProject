@@ -9,25 +9,36 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CurrentDate {
-
-	Calendar calendar = Calendar.getInstance(Locale.US);
-	Date date = new Date();
-
-	public int getMonth() {
+	
+	public Date setDate(int year, int month, int date){
+		Date dateObj = null;
+		try{
+			Calendar cal = Calendar.getInstance(Locale.US);
+			cal.set(Calendar.DATE, date);
+			cal.set(Calendar.MONTH, month);
+			cal.set(Calendar.YEAR, year);
+			dateObj = cal.getTime();
+		} catch(Throwable t){
+			t.printStackTrace();
+		}
+		return dateObj;
+	}
+	
+	public int getMonth(Date date) {
 		SimpleDateFormat sdf = new SimpleDateFormat("MM");
 		return Integer.valueOf(sdf.format(date));
 	}
 
-	public int getDate() {
+	public int getDate(Date date) {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd");
 		return Integer.valueOf(sdf.format(date));
 	}
 
-	public int getYear() {
+	public int getYear(Calendar calendar) {
 		return calendar.get(Calendar.YEAR);
 	}
 
-	public int getMonth(String date) {
+	public int getMonth(Calendar calendar, String date) {
 		try {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			calendar.setTime(sdf.parse(date));
@@ -47,7 +58,7 @@ public class CurrentDate {
 		return time.replaceAll("\"", "");
 	}
 
-	public int getDay(String date) {
+	public int getDay(Calendar calendar, String date) {
 		try {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			calendar.setTime(sdf.parse(date));
@@ -57,7 +68,7 @@ public class CurrentDate {
 		return calendar.get(Calendar.DAY_OF_WEEK);
 	}
 	
-	public int getDate(String date) {
+	public int getDate(Calendar calendar, String date) {
 		try {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			calendar.setTime(sdf.parse(date));
@@ -67,7 +78,7 @@ public class CurrentDate {
 		return calendar.get(Calendar.DATE);
 	}
 
-	public int getYear(String date) {
+	public int getYear(Calendar calendar, String date) {
 		try {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			calendar.setTime(sdf.parse(date));
@@ -77,7 +88,7 @@ public class CurrentDate {
 		return calendar.get(Calendar.YEAR);
 	}
 
-	public String getFirstDayOfMonth() {
+	public String getFirstDayOfMonth(Calendar calendar) {
 		try {
 			calendar.set(Calendar.DAY_OF_MONTH, Calendar.getInstance().getActualMinimum(Calendar.DAY_OF_MONTH));
 			String date = calendar.getTime().toString();
@@ -94,13 +105,13 @@ public class CurrentDate {
 		return null;
 	}
 
-	public int getWeekOfMonth() {
+	public int getWeekOfMonth(Date date) {
 		SimpleDateFormat sdf = new SimpleDateFormat("WW");
 		return Integer.valueOf(sdf.format(date)) - 1;
 	}
 
-	public String getStringDayOfWeek() {
-		switch (getDay(String.valueOf(getDate()))) {
+	public String getStringDayOfWeek(Calendar calendar, Date date) {
+		switch (getDay(calendar, String.valueOf(getDate(date)))) {
 		case 0:
 			return "mon";
 		case 1:

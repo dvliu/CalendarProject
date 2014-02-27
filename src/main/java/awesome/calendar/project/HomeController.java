@@ -47,7 +47,6 @@ public class HomeController {
 		String firstDayOfMonth = cDate.getFirstDayOfMonth(calendar);
 		int firstIntDayOfMonth = cDate.getIntFirstDayOfMonth(firstDayOfMonth);
 		model.addAttribute("monthDictionaryList", cacheService.searchMonth(cDate.getMonth(date)));
-
 		model.addAttribute("today_month", cDate.getStringMonth(cDate.getMonth(date)));
 		model.addAttribute("today_int_month", cDate.getMonth(date));
 		model.addAttribute("today_year", cDate.getYear(calendar));
@@ -55,7 +54,7 @@ public class HomeController {
 		model.addAttribute("last_day_month", cDate.getLastDayOfMonth(cDate.getMonth(date)));
 		model.addAttribute("first_day_month", firstDayOfMonth);
 		model.addAttribute("first_int_day_month", firstIntDayOfMonth);
-		// model.addAttribute("today_day", cDate.getStringDayOfWeek());
+//		model.addAttribute("today_day", cDate.getStringDayOfWeek(calendar, date));
 		model.addAttribute("week_of_month", cDate.getWeekOfMonth(date));
 
 		return "home";
@@ -73,7 +72,6 @@ public class HomeController {
 	public String add(Model model) {
 		List<String> prioritiesList = cacheService.processPriorities();
 		model.addAttribute("priorities", prioritiesList);
-
 		return "add";
 	}
 

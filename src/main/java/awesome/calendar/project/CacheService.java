@@ -131,7 +131,7 @@ public class CacheService {
 	public List<HashMap<String, String>> searchWeek(long month, long weekOfMonth, long todayDate, long firstIntDayOfMonth) {
 		List<HashMap<String, String>> answer = Lists.newArrayList();
 		try {
-			long firstDateOfWeek = todayDate - (7 * weekOfMonth) - firstIntDayOfMonth; 
+			long firstDateOfWeek = todayDate - (7 * weekOfMonth) + firstIntDayOfMonth; 
 			QueryFilterBuilder monthFilter = queryFilter(matchQuery("month", month));
 			
 			QueryFilterBuilder sundayFilter = queryFilter(matchQuery("date", firstDateOfWeek));

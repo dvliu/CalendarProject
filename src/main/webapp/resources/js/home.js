@@ -13,7 +13,7 @@ $(document).ready(function() {
 	}).done(function(data) {
 		console.log('data: ', data);
 		var dataJson = $.parseJSON(data);
-		console.log('dataJson', dataJson);
+		console.log('dataJson:\n ', dataJson);
 
 		$('.calendar_day li').each(function(i) {
 			var indexId = $(this).attr('id');
@@ -21,7 +21,7 @@ $(document).ready(function() {
 				var compareId = dataJson[i].date + "_" + dataJson[i].time;
 				compareId = compareId.replace(":00", "");
 				if(indexId == compareId){
-					console.log(indexId);
+					console.log('indexId->', indexId);
 					document.getElementById(compareId).innerHTML = dataJson[i].name;
 				}
 			};

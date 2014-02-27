@@ -61,7 +61,7 @@ public class CurrentDate {
 	public int getDay(Calendar calendar, String date) {
 		try {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			calendar.setTime(sdf.parse(date));
+			calendar.setTime(sdf.parse(date.toString()));
 		} catch (Throwable t) {
 			t.printStackTrace();
 		}

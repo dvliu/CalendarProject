@@ -33,6 +33,10 @@ public class CurrentDate {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd");
 		return Integer.valueOf(sdf.format(date));
 	}
+	
+	public int getDay(Calendar calendar) {
+		return calendar.get(Calendar.DAY_OF_WEEK);
+	}
 
 	public int getYear(Calendar calendar) {
 		return calendar.get(Calendar.YEAR);
@@ -61,7 +65,7 @@ public class CurrentDate {
 	public int getDay(Calendar calendar, String date) {
 		try {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			calendar.setTime(sdf.parse(date.toString()));
+			calendar.setTime(sdf.parse(date));
 		} catch (Throwable t) {
 			t.printStackTrace();
 		}
@@ -110,26 +114,7 @@ public class CurrentDate {
 		return Integer.valueOf(sdf.format(date)) - 1;
 	}
 
-	public String getStringDayOfWeek(Calendar calendar, Date date) {
-		switch (getDay(calendar, String.valueOf(getDate(date)))) {
-		case 0:
-			return "mon";
-		case 1:
-			return "tue";
-		case 2:
-			return "wed";
-		case 3:
-			return "thur";
-		case 4:
-			return "fri";
-		case 5:
-			return "sat";
-		case 6:
-			return "sun";
-		}
-		return null;
-	}
-
+	
 	public int getLastDayOfMonth(int month) {
 		switch (month) {
 		case 1:
